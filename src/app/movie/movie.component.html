@@ -1,0 +1,5 @@
+<input #in1 type="text" value="Interstellar"/>
+<button (click)="searchMovie(in1.value)">Zoek film</button>
+
+<br>
+<img *ngIf="moviePosterUrl" [src]="moviePosterUrl">
