@@ -1,5 +1,41 @@
-<input #in1 type="text" value="Interstellar"/>
-<button (click)="searchMovie(in1.value)">Zoek film</button>
+<!-- <input #in1 type="text" value="Jack Reacher"/> -->
+<!-- <button pButton (click)="searchMovie(in1.value)" label="Zoek film" class="ui-button-danger"></button> -->
 
 <br>
-<img *ngIf="moviePosterUrl" [src]="moviePosterUrl">
+<div class="ui-g ui-fluid">
+  <div class="ui-g-12 ui-md-4">
+      <div class="ui-inputgroup">
+          <button pButton (click)="searchMovie(in1.value)" type="button" label="Zoek"></button>
+          <input #in1 type="text" pInputText placeholder="The Lord of the Rings" value="The Lord of the Rings">         
+      </div>
+  </div>
+</div>
+
+<!-- <br>
+<img *ngIf="moviePosterUrl" [src]="moviePosterUrl"> -->
+
+<!-- <br>
+<ul>
+    <li *ngFor="let movie of movieList; let i=index">
+        {{movie.title}}
+    </li>
+</ul> -->
+
+<div class="p-grid" >
+        <div class="p-col" *ngFor="let movie of movieList; let i=index">
+          <p>{{movie.title}}</p>
+          <img [src]="posterList[i]">
+        </div>
+</div>
+
+<!-- <div class="p-grid" >
+  <div class="p-col" *ngFor="let movie of testList; let i=index">
+    <p>{{movie}}</p>
+  </div>
+  <div class="p-col">
+    <p>sdfasdfja;slijf;lkasjd;lkfjas;lkdjf;lkajlad</p>
+  </div>
+  <div class="p-col">
+    <p>;alskjdf;lkasjdf;aiowehfuirhgiuorhg</p>
+  </div>
+</div> -->
