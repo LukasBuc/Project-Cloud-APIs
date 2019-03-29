@@ -1,5 +1,16 @@
-<p>
-  movie-info works!
-</p>
+<h1>{{movieTitle}}</h1>
 
-<p>{{movieId}}</p>
+<img  [src]="poster_full_url">
+<br>
+<img [src]="backdrop">
+
+<p>Budget: {{budget}}</p>
+<br>
+<p>Imdb id: {{imdbLink}}</p>
+<br>
+<!-- TODO: opmaak budget en genres en weergave link naar imdb website-->
+<p>Genre: </p>
+<li *ngFor="let genre of genres">
+  {{genre.name}}
+</li>
+<br>
