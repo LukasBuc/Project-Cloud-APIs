@@ -1,6 +1,6 @@
 <div class="ui-inputgroup">
-  <button pButton (click)="searchMovie(in1.value)" type="button" label="Zoek"></button>
-  <input #in1 type="text" pInputText placeholder="Star Wars" value="Star Wars">
+  <button id="myBtn" pButton (click)="searchMovie(in1.value)" type="button" label="Zoek"></button>
+  <input id="myInput" #in1 type="text" pInputText placeholder="Geef film" value="Star Wars" (keyup.enter)="searchMovie(in1.value)" autofocus>
 </div>
 
 <div class="p-grid">
