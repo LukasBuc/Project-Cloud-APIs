@@ -10,7 +10,7 @@ export class MovieService {
 
   //   //API-key: b214031a8024721ce93ad896558c66ec
 
-     getMovie(title: string = "Interstellar"){
+     getMovie(title: string = "Star Wars"){
        return this.http.get<IMovie>(`https://api.themoviedb.org/3/search/movie?api_key=b214031a8024721ce93ad896558c66ec&query=${title}`)
      }
 
