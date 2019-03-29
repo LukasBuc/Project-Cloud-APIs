@@ -12,8 +12,6 @@ export class MovieInfoComponent implements OnInit {
 
   constructor(private sharedSvc: MovieinfoService) { }
 
-  
-
   ngOnInit() {
     this.movieId = this.sharedSvc.getId();
     console.log(`Het id van deze film is: ${this.sharedSvc.getId()}`);    
