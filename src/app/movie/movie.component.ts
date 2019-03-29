@@ -19,6 +19,9 @@ export class MovieComponent implements OnInit {
   constructor(private svc: MovieService, private sharedSvc: MovieinfoService) { }
 
   ngOnInit() {
+    if(this.sharedSvc.getsearchTitle() != ""){
+      this.searchMovie(this.sharedSvc.getsearchTitle());
+    }
   }
 
   searchMovie(userInput: string){
@@ -26,7 +29,7 @@ export class MovieComponent implements OnInit {
 
       this.movieList = result.results;
       //console.table(this.movieList);
-
+      this.sharedSvc.setSearchTitle(userInput);
       
 
       //Lijst van poster url's ophalen en volledig maken
