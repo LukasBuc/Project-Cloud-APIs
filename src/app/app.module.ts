@@ -14,11 +14,13 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { MovieService } from './movie/movie.service';
 import { MovieComponent } from './movie/movie.component';
+import { MovieInfoComponent } from './movie-info/movie-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MovieComponent
+    MovieComponent,
+    MovieInfoComponent
   ],
   imports: [
     BrowserModule,
