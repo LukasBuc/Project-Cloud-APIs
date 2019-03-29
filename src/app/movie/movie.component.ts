@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ComponentRef } from '@angular/core';
 import { MovieService, IResult, IMovieInfo } from './movie.service';
+import { MovieinfoService } from '../movie-info/movieinfo.service';
+import { componentFactoryName } from '@angular/compiler';
+import { load } from '@angular/core/src/render3';
+import { getComponent } from '@angular/core/src/render3/discovery_utils';
+import { MovieInfoComponent } from '../movie-info/movie-info.component';
 
 @Component({
   selector: 'app-movie',
@@ -14,7 +19,7 @@ export class MovieComponent implements OnInit {
 
   //testList: string[] = ["FILM 1", "FILM 2", "FILM 3", "FILM 4"];
 
-  constructor(private svc: MovieService) { }
+  constructor(private svc: MovieService, private sharedSvc: MovieinfoService) { }
 
   ngOnInit() {
   }
@@ -37,9 +42,14 @@ export class MovieComponent implements OnInit {
     this.movieId = this.movieList[listIndex].id.toString();
     console.log(this.movieId);
 
-    this.svc.getMovieInfo(this.movieId).subscribe((result) => {
-      this.movieInfo = result;
-      console.log(this.movieInfo);
-    })
+    this.sharedSvc.id = this.movieId;
+    console.log(this.sharedSvc.id);
+
+    //TODO: Veranderen van pagina zal waarschijnlijk via de Router module moeten gebeuren en dan met: RouterLink: ""
+
+    // this.svc.getMovieInfo(this.movieId).subscribe((result) => {
+    //   this.movieInfo = result;
+    //   console.log(this.movieInfo);
+    // })
   }
 }

@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { MovieService } from './movie/movie.service';
 import { MovieComponent } from './movie/movie.component';
 import { MovieInfoComponent } from './movie-info/movie-info.component';
+import { MovieinfoService } from './movie-info/movieinfo.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { MovieInfoComponent } from './movie-info/movie-info.component';
     InputTextModule
   ],
   providers: [
-    MovieService
+    MovieService,
+    MovieinfoService
   ],
   bootstrap: [AppComponent]
 })
