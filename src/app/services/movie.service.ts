@@ -6,16 +6,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MovieService {
 
+  APIkey: string = "b214031a8024721ce93ad896558c66ec";
+
   constructor(private http: HttpClient) { }
 
-  //   //API-key: b214031a8024721ce93ad896558c66ec
-
      getMovie(title: string = "Star Wars"){
-       return this.http.get<IMovie>(`https://api.themoviedb.org/3/search/movie?api_key=b214031a8024721ce93ad896558c66ec&query=${title}`)
+       return this.http.get<IMovie>(`https://api.themoviedb.org/3/search/movie?api_key=${this.APIkey}&query=${title}`)
      }
 
      getMovieInfo(Id: string){
-       return this.http.get<IMovieInfo>(`https://api.themoviedb.org/3/movie/${Id}?api_key=b214031a8024721ce93ad896558c66ec`)
+       return this.http.get<IMovieInfo>(`https://api.themoviedb.org/3/movie/${Id}?api_key=${this.APIkey}`)
      }
 
 }
