@@ -1,19 +1,15 @@
-<!-- <div class="ui-g ui-fluid">
-  <div class="ui-g-12 ui-md-4"> -->
-      <div class="ui-inputgroup">
-          <button pButton (click)="searchMovie(in1.value)" type="button" label="Zoek"></button>
-          <input #in1 type="text" pInputText placeholder="Star Wars" value="Star Wars">          
-      </div>
-  <!-- </div>
-</div> -->
+<div class="ui-inputgroup">
+  <button pButton (click)="searchMovie(in1.value)" type="button" label="Zoek"></button>
+  <input #in1 type="text" pInputText placeholder="Star Wars" value="Star Wars">
+</div>
 
 <div class="p-grid">
-        <div class="p-col" *ngFor="let movie of movieList; let i=index" >
-          <p>{{movie.title}}</p>
-          <img [src]="posterList[i]" (click)="getMovieId(i)" onmouseover="" style="cursor: pointer" [routerLink]="['/info']">
-          <!-- TODO: Maak de image clickable zodat als er op geklikt wordt een nieuw venster wordt geopend waar extra info endergelijke over de film wordt weergegeven.
+  <div class="p-col" *ngFor="let movie of movieList; let i=index">
+    <p>{{movie.title}}</p>
+    <img [src]="posterList[i]" (click)="getMovieId(i)" onmouseover="" style="cursor: pointer" [routerLink]="['/info']">
+    <!-- TODO: Maak de image clickable zodat als er op geklikt wordt een nieuw venster wordt geopend waar extra info endergelijke over de film wordt weergegeven.
                Het opzoeken hiervan gebeurt m.b.v de Id die bij de vorige zoekactie werd opgehaald (kan uit de array worden gehaald).
                Op deze manier kunnen we dan gebruik maken van de id: https://api.themoviedb.org/3/movie/343611?api_key=b214031a8024721ce93ad896558c66ec 
                -->
-        </div>
+  </div>
 </div>

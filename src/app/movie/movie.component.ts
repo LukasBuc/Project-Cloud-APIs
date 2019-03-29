@@ -13,6 +13,8 @@ export class MovieComponent implements OnInit {
   movieInfo: IMovieInfo;
   movieId: string;
 
+  poster_base_url: string = 'https://image.tmdb.org/t/p/w300';
+
 
   //testList: string[] = ["FILM 1", "FILM 2", "FILM 3", "FILM 4"];
 
@@ -35,7 +37,7 @@ export class MovieComponent implements OnInit {
       //Lijst van poster url's ophalen en volledig maken
       this.posterList = new Array(result.results.length);
       for (let i = 0; i < result.results.length; i++) {
-        this.posterList[i] = 'https://image.tmdb.org/t/p/w300' + result.results[i].poster_path;
+        this.posterList[i] = this.poster_base_url + result.results[i].poster_path;
       }
     })
   }
