@@ -28,4 +28,6 @@ export class MovieinfoService {
     this.id = input
   }
 
+  //TODO: Poster_path hier bijhouden zodat deze niet veranderd van de engelse versie
+  //      naar de nederlandse versie
 }
