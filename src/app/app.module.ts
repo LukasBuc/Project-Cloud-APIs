@@ -7,6 +7,8 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { TableModule } from 'primeng/table';
 import { PanelModule } from 'primeng/panel';
 import { InputTextModule } from 'primeng/inputtext';
+import { TabMenuModule } from 'primeng/tabmenu';
+
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -17,12 +19,16 @@ import { MovieService } from './services/movie.service';
 import { MovieComponent } from './movie/movie.component';
 import { MovieInfoComponent } from './movie/movie-info/movie-info.component';
 import { MovieinfoService } from './services/movieinfo.service';
+import { TabMenuComponent } from './tab-menu/tab-menu.component';
+import { NowPlayingComponent } from './now-playing/now-playing.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MovieComponent,
-    MovieInfoComponent
+    MovieInfoComponent,
+    TabMenuComponent,
+    NowPlayingComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +40,11 @@ import { MovieinfoService } from './services/movieinfo.service';
     TableModule,
     PanelModule,
     InputTextModule,
+    TabMenuModule,
     RouterModule.forRoot([
       { path: "search", component: MovieComponent},
       { path: "info", component: MovieInfoComponent},
+      { path: "nowPlaying", component: NowPlayingComponent},
       { path: "", redirectTo: "search", pathMatch: "full"}
     ])
   ],
