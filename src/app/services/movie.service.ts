@@ -7,15 +7,22 @@ import { HttpClient } from '@angular/common/http';
 export class MovieService {
 
   APIkey: string = "b214031a8024721ce93ad896558c66ec";
+  language: string = "nl";
+  
 
   constructor(private http: HttpClient) { }
 
      getMovie(title: string = "Star Wars"){
-       return this.http.get<IMovie>(`https://api.themoviedb.org/3/search/movie?api_key=${this.APIkey}&query=${title}`)
+       return this.http.get<IMovie>(`https://api.themoviedb.org/3/search/movie?api_key=${this.APIkey}&query=${title}`);
      }
 
      getMovieInfo(Id: string){
-       return this.http.get<IMovieInfo>(`https://api.themoviedb.org/3/movie/${Id}?api_key=${this.APIkey}`)
+       return this.http.get<IMovieInfo>(`https://api.themoviedb.org/3/movie/${Id}?api_key=${this.APIkey}&language=${this.language}`);
+     }
+
+     getNowPlaying(Region: string = "BE"){ //Met region wordt bedoeld welk land, dit moet worden weergegeven met de ISO 3166-1 code
+       return this.http.get<INowPlaying>(`https://api.themoviedb.org/3/movie/now_playing?api_key=${this.APIkey}&language=en-US&page=1&region=${Region}`);
+      
      }
 
 }
@@ -101,4 +108,35 @@ export interface IMovieInfo {
   video: boolean;
   vote_average: number;
   vote_count: number;
+}
+
+//Get nowPlaying
+// export interface IResult {
+//   vote_count: number;
+//   id: number;
+//   video: boolean;
+//   vote_average: number;
+//   title: string;
+//   popularity: number;
+//   poster_path: string;
+//   original_language: string;
+//   original_title: string;
+//   genre_ids: number[];
+//   backdrop_path: string;
+//   adult: boolean;
+//   overview: string;
+//   release_date: string;
+// }
+
+export interface IDates {
+  maximum: string;
+  minimum: string;
+}
+
+export interface INowPlaying {
+  results: IResult[];
+  page: number;
+  total_results: number;
+  dates: IDates;
+  total_pages: number;
 }

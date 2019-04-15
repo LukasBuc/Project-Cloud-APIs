@@ -1,0 +1,8 @@
+<h1>Films die nu worden gespeeld</h1>
+
+<div class="p-grid">
+  <div class="p-col" *ngFor="let movie of movieList; let i=index">
+    <p>{{movie.title}}</p>
+    <img [src]="posterList[i]" (click)="getMovieId(i)" onmouseover="" style="cursor: pointer" [routerLink]="['/info']">
+  </div>
+</div>

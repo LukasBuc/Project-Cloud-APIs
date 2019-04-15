@@ -15,11 +15,10 @@ export class MovieInfoComponent implements OnInit {
 
   poster_base_url: string = 'https://image.tmdb.org/t/p/w300';
   poster_full_url: string;
-  backdrop: string;
   movieTitle: string;
   budget: string;
-  imdbLink: string;
   genres: IGenre[];
+  description: string;
 
   constructor(private sharedSvc: MovieinfoService, private movieSvc: MovieService, private router: Router) { }
 
@@ -38,13 +37,16 @@ export class MovieInfoComponent implements OnInit {
         this.movieInfo = result;
         console.table(this.movieInfo);
         this.poster_full_url = this.poster_base_url + this.movieInfo.poster_path;
-        this.backdrop = this.poster_base_url + this.movieInfo.backdrop_path;
         this.movieTitle = this.movieInfo.original_title;
         this.budget = this.movieInfo.budget.toString();
+<<<<<<< HEAD
         this.genres = this.movieInfo.genres;
 
         //TODO: Imdb link verder uitwerken als dat gaat
         this.imdbLink = this.movieInfo.imdb_id;
+=======
+        this.description = this.movieInfo.overview;
+>>>>>>> 4736ab4320b83ec67bec56da645a23f26ce965e8
   
         //TODO: description van film toevoegen, noemt "overview" in de tabel
       })
