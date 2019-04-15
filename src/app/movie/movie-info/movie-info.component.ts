@@ -41,11 +41,12 @@ export class MovieInfoComponent implements OnInit {
         this.backdrop = this.poster_base_url + this.movieInfo.backdrop_path;
         this.movieTitle = this.movieInfo.original_title;
         this.budget = this.movieInfo.budget.toString();
-  
+        this.genres = this.movieInfo.genres;
+
         //TODO: Imdb link verder uitwerken als dat gaat
         this.imdbLink = this.movieInfo.imdb_id;
   
-        this.genres = this.movieInfo.genres;
+        //TODO: description van film toevoegen, noemt "overview" in de tabel
       })
     }  
   }
