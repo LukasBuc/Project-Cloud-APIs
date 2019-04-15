@@ -39,14 +39,7 @@ export class MovieInfoComponent implements OnInit {
         this.poster_full_url = this.poster_base_url + this.movieInfo.poster_path;
         this.movieTitle = this.movieInfo.original_title;
         this.budget = this.movieInfo.budget.toString();
-<<<<<<< HEAD
-        this.genres = this.movieInfo.genres;
-
-        //TODO: Imdb link verder uitwerken als dat gaat
-        this.imdbLink = this.movieInfo.imdb_id;
-=======
         this.description = this.movieInfo.overview;
->>>>>>> 4736ab4320b83ec67bec56da645a23f26ce965e8
   
         //TODO: description van film toevoegen, noemt "overview" in de tabel
       })
