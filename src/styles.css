@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+/* body, html { 
+
+} */
+
+/* html {
+    width: 100vw;
+}*/
+
+body { 
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    color: white;
+    background-color: #464642;
+}
+
+.film-weergave {
+    /* min-width: 1000px;
+    max-width: 2000px;
+    align-content: center; */
+    margin: auto;
+    width: 50%;
+    border: 3px solid green; /*Test*/
+    padding: 10px;
+    background: #4F5C5C;
+}
