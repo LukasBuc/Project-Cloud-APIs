@@ -1,24 +1,30 @@
-<h1>{{movieTitle}}</h1>
+<div class="film-weergave">
+    <h1>{{movieTitle}}</h1>
 
-<img  [src]="poster_full_url">
-<br>
-
-<p>{{description}}</p>
-
-<p>Budget: {{budget}}</p>
-<br>
-<!-- TODO: opmaak budget en genres-->
-<p>Genre: </p>
-<li *ngFor="let genre of genres">
-  {{genre.name}}
-</li>
-
-<!-- TODO: Release datum van film tonen -->
-
-
-<!-- TODO: Een aantal reviews automatisch er op zetten
-     gebruik https://api.themoviedb.org/3/movie/"movieID"/reviews?api_key=b214031a8024721ce93ad896558c66ec 
-     om een aantal reviews op te halen-->
-
-
-<!-- TODO: Eventueel top 3 acteurs tonen die meedoen in de film -->
+    <img  [src]="poster_full_url">
+    <br>
+    
+    <p>{{description}}</p>
+    
+    <p>Budget: {{budget}}</p>
+    <br>
+    <!-- TODO: opmaak budget en genres-->
+    <p>Genre: </p>
+    <li *ngFor="let genre of genres">
+      {{genre.name}}
+    </li>
+    
+    <!-- TODO: Release datum van film tonen -->
+    
+    
+    <!-- TODO: Een aantal reviews automatisch er op zetten
+         gebruik https://api.themoviedb.org/3/movie/"movieID"/reviews?api_key=b214031a8024721ce93ad896558c66ec 
+         om een aantal reviews op te halen-->
+    
+    
+    <p>Acteurs: </p>
+    <ng-container *ngFor="let actor of actors; let i=index">
+      <li class="dropdown-item" *ngIf="i<6">{{actor.name}} als {{actor.character}}</li>
+      <img [src]="actor.profile_path" *ngIf="i<6">
+    </ng-container>
+</div>

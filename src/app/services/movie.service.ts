@@ -7,8 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class MovieService {
 
   APIkey: string = "b214031a8024721ce93ad896558c66ec";
-  language: string = "nl";
-  
+  language: string = "nl";  
 
   constructor(private http: HttpClient) { }
 
@@ -21,10 +20,12 @@ export class MovieService {
      }
 
      getNowPlaying(Region: string = "BE"){ //Met region wordt bedoeld welk land, dit moet worden weergegeven met de ISO 3166-1 code
-       return this.http.get<INowPlaying>(`https://api.themoviedb.org/3/movie/now_playing?api_key=${this.APIkey}&language=en-US&page=1&region=${Region}`);
-      
+       return this.http.get<INowPlaying>(`https://api.themoviedb.org/3/movie/now_playing?api_key=${this.APIkey}&language=en-US&page=1&region=${Region}`);      
      }
 
+     getMovieCredits(Id: string){
+       return this.http.get<IMovieCredits>(`https://api.themoviedb.org/3/movie/${Id}/credits?api_key=${this.APIkey}`);
+     }
 }
 
 // getMovie
@@ -111,22 +112,6 @@ export interface IMovieInfo {
 }
 
 //Get nowPlaying
-// export interface IResult {
-//   vote_count: number;
-//   id: number;
-//   video: boolean;
-//   vote_average: number;
-//   title: string;
-//   popularity: number;
-//   poster_path: string;
-//   original_language: string;
-//   original_title: string;
-//   genre_ids: number[];
-//   backdrop_path: string;
-//   adult: boolean;
-//   overview: string;
-//   release_date: string;
-// }
 
 export interface IDates {
   maximum: string;
@@ -139,4 +124,32 @@ export interface INowPlaying {
   total_results: number;
   dates: IDates;
   total_pages: number;
+}
+
+//Movie credits
+export interface ICast {
+  cast_id: number;
+  character: string;
+  credit_id: string;
+  gender: number;
+  id: number;
+  name: string;
+  order: number;
+  profile_path: string;
+}
+
+export interface ICrew {
+  credit_id: string;
+  department: string;
+  gender: number;
+  id: number;
+  job: string;
+  name: string;
+  profile_path: string;
+}
+
+export interface IMovieCredits {
+  id: number;
+  cast: ICast[];
+  crew: ICrew[];
 }

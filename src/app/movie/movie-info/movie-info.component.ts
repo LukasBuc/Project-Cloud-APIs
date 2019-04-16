@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MovieinfoService } from '../../services/movieinfo.service';
-import { MovieService, IMovieInfo, IGenre } from 'src/app/services/movie.service';
+import { MovieService, IMovieInfo, IGenre, ICast } from 'src/app/services/movie.service';
 import { RouterLink, Router } from '@angular/router';
 
 @Component({
@@ -20,7 +20,11 @@ export class MovieInfoComponent implements OnInit {
   genres: IGenre[];
   description: string;
 
-  constructor(private sharedSvc: MovieinfoService, private movieSvc: MovieService, private router: Router) { }
+  //Credits
+  actors: ICast[];
+  actorImgBaseUrl: string = 'https://image.tmdb.org/t/p/w200';
+
+  constructor(private sharedSvc: MovieinfoService, private movieSvc: MovieService, private MovieCredits: MovieService, private router: Router) { }
 
   ngOnInit() {
     this.movieId = this.sharedSvc.getId();
@@ -36,12 +40,24 @@ export class MovieInfoComponent implements OnInit {
       this.movieSvc.getMovieInfo(this.movieId).subscribe((result) => {
         this.movieInfo = result;
         console.table(this.movieInfo);
+
         this.poster_full_url = this.poster_base_url + this.movieInfo.poster_path;
         this.movieTitle = this.movieInfo.original_title;
         this.budget = this.movieInfo.budget.toString();
         this.description = this.movieInfo.overview;
-  
-        //TODO: description van film toevoegen, noemt "overview" in de tabel
+        this.genres = this.movieInfo.genres;
+      })
+
+      this.MovieCredits.getMovieCredits(this.movieId).subscribe((result) => {
+        //Acteurs in lijst steken
+        this.actors = new Array(result.cast.length);
+        for (let i = 0; i < result.cast.length; i++) {
+          this.actors[i] = result.cast[i];
+          
+          //profile_path aanpassen naar volledige url
+          this.actors[i].profile_path = this.actorImgBaseUrl + this.actors[i].profile_path; 
+        }
+        console.table(this.actors);
       })
     }  
   }
