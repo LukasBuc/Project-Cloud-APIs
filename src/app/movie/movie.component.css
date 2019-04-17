@@ -1,5 +1,15 @@
 .p-grid {
     margin-left: 25px;
     margin-right: 25px;
+
+    /* test */
+    /* width: 1055px; */
+    /* background: white; */
 }
+
+.p-col {
+    width: 350px;
+    
+}
+
 
