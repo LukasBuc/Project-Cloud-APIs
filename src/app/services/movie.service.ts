@@ -26,6 +26,10 @@ export class MovieService {
      getMovieCredits(Id: string){
        return this.http.get<IMovieCredits>(`https://api.themoviedb.org/3/movie/${Id}/credits?api_key=${this.APIkey}`);
      }
+
+     getUpcomingMovies(){
+       return this.http.get<IUpcomingMovies>(`https://api.themoviedb.org/3/movie/upcoming?api_key=${this.APIkey}&language=${this.language}&page=1`)
+     }
 }
 
 // getMovie
@@ -112,7 +116,6 @@ export interface IMovieInfo {
 }
 
 //Get nowPlaying
-
 export interface IDates {
   maximum: string;
   minimum: string;
@@ -152,4 +155,13 @@ export interface IMovieCredits {
   id: number;
   cast: ICast[];
   crew: ICrew[];
+}
+
+ //Upcoming movies
+export interface IUpcomingMovies {
+  results: IResult[];
+  page: number;
+  total_results: number;
+  dates: IDates;
+  total_pages: number;
 }
