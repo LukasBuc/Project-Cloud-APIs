@@ -1,5 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+.film-titel {
+  height: 18px;
+  overflow: hidden;
+}
 
+/* Afmetingen per scherm grootte */
   @media screen and (min-width: 1600px) {
     body {
         margin-left: 0px;
