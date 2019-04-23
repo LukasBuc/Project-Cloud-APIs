@@ -23,6 +23,7 @@ import { TabMenuComponent } from './tab-menu/tab-menu.component';
 import { NowPlayingComponent } from './now-playing/now-playing.component';
 import { UpcomingMoviesComponent } from './upcoming-movies/upcoming-movies.component';
 import { PersonService } from './services/person.service';
+import { PersonInfoComponent } from './person-info/person-info.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PersonService } from './services/person.service';
     MovieInfoComponent,
     TabMenuComponent,
     NowPlayingComponent,
-    UpcomingMoviesComponent
+    UpcomingMoviesComponent,
+    PersonInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +51,7 @@ import { PersonService } from './services/person.service';
       { path: "info", component: MovieInfoComponent},
       { path: "nowPlaying", component: NowPlayingComponent},
       { path: "upcomingMovies", component: UpcomingMoviesComponent},
+      { path: "personInfo", component: PersonInfoComponent },
       { path: "", redirectTo: "search", pathMatch: "full"}
     ])
   ],

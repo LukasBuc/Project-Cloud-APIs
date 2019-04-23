@@ -25,6 +25,6 @@
     <p>Acteurs: </p>
     <ng-container *ngFor="let actor of actors; let i=index">
       <li class="dropdown-item" *ngIf="i<6">{{actor.name}} als {{actor.character}}</li>
-      <img [src]="actor.profile_path" *ngIf="i<6">
+      <img [src]="actor.profile_path" *ngIf="i<6" (click)=getActorId(i) onmouseover="" style="cursor: pointer" [routerLink]="['/personInfo']">
     </ng-container>
 </div>

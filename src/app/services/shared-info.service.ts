@@ -7,6 +7,7 @@ export class SharedinfoService {
 
   private id: string = "";
   private searchTitle: string = "";
+  private personId: string = "";
 
   constructor() { }
 
@@ -26,6 +27,15 @@ export class SharedinfoService {
 
   public setId(input: string){
     this.id = input
+  }
+
+  //Person Id
+  public getPersonId(){
+    return this.personId;
+  }
+
+  public setPersonId(input: string){
+    this.personId = input;
   }
 
   //TODO: Poster_path hier bijhouden zodat deze niet veranderd van de engelse versie

@@ -23,6 +23,7 @@ export class MovieInfoComponent implements OnInit {
   //Credits
   actors: ICast[];
   actorImgBaseUrl: string = 'https://image.tmdb.org/t/p/w200';
+  personId: string;
 
   constructor(private sharedSvc: SharedinfoService, private movieSvc: MovieService, private MovieCredits: MovieService, private router: Router) { }
 
@@ -60,5 +61,12 @@ export class MovieInfoComponent implements OnInit {
         console.table(this.actors);
       })
     }  
+  }
+
+  getActorId(listIndex: number){
+    this.personId = this.actors[listIndex].id.toString();
+
+    this.sharedSvc.setPersonId(this.personId);
+    console.log(this.sharedSvc.getPersonId());
   }
 }
