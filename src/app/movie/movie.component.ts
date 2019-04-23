@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService, IResult} from '../services/movie.service';
-import { MovieinfoService } from '../services/movieinfo.service'
+import { SharedinfoService } from '../services/shared-info.service'
 
 @Component({
   selector: 'app-movie',
@@ -16,7 +16,7 @@ export class MovieComponent implements OnInit {
 
   //testList: string[] = ["FILM 1", "FILM 2", "FILM 3", "FILM 4"];
 
-  constructor(private svc: MovieService, private sharedSvc: MovieinfoService) { }
+  constructor(private svc: MovieService, private sharedSvc: SharedinfoService) { }
 
   ngOnInit() {
     if(this.sharedSvc.getsearchTitle() != ""){

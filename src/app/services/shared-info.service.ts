@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class MovieinfoService {
+export class SharedinfoService {
 
   private id: string = "";
   private searchTitle: string = "";

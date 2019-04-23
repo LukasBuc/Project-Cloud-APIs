@@ -18,10 +18,11 @@ import { AppComponent } from './app.component';
 import { MovieService } from './services/movie.service';
 import { MovieComponent } from './movie/movie.component';
 import { MovieInfoComponent } from './movie/movie-info/movie-info.component';
-import { MovieinfoService } from './services/movieinfo.service';
+import { SharedinfoService } from './services/shared-info.service';
 import { TabMenuComponent } from './tab-menu/tab-menu.component';
 import { NowPlayingComponent } from './now-playing/now-playing.component';
 import { UpcomingMoviesComponent } from './upcoming-movies/upcoming-movies.component';
+import { PersonService } from './services/person.service';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { UpcomingMoviesComponent } from './upcoming-movies/upcoming-movies.compo
   ],
   providers: [
     MovieService,
-    MovieinfoService
+    SharedinfoService,
+    PersonService
   ],
   bootstrap: [AppComponent]
 })

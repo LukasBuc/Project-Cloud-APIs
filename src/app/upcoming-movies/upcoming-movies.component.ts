@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService, IResult } from '../services/movie.service';
-import { MovieinfoService } from '../services/movieinfo.service';
+import { SharedinfoService } from '../services/shared-info.service';
 
 @Component({
   selector: 'app-upcoming-movies',
@@ -14,7 +14,7 @@ export class UpcomingMoviesComponent implements OnInit {
 
   poster_base_url: string = 'https://image.tmdb.org/t/p/w300';
 
-  constructor(private svc: MovieService, private sharedSvc: MovieinfoService) { }
+  constructor(private svc: MovieService, private sharedSvc: SharedinfoService) { }
 
   ngOnInit() {
     this.searchUpcomingMovies();

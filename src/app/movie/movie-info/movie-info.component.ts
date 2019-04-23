@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MovieinfoService } from '../../services/movieinfo.service';
+import { SharedinfoService } from '../../services/shared-info.service';
 import { MovieService, IMovieInfo, IGenre, ICast } from 'src/app/services/movie.service';
 import { RouterLink, Router } from '@angular/router';
 
@@ -24,7 +24,7 @@ export class MovieInfoComponent implements OnInit {
   actors: ICast[];
   actorImgBaseUrl: string = 'https://image.tmdb.org/t/p/w200';
 
-  constructor(private sharedSvc: MovieinfoService, private movieSvc: MovieService, private MovieCredits: MovieService, private router: Router) { }
+  constructor(private sharedSvc: SharedinfoService, private movieSvc: MovieService, private MovieCredits: MovieService, private router: Router) { }
 
   ngOnInit() {
     this.movieId = this.sharedSvc.getId();
