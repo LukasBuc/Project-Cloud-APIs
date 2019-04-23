@@ -6,8 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MovieService {
 
-  APIkey: string = "b214031a8024721ce93ad896558c66ec";
-  language: string = "nl";  
+  private APIkey: string = "b214031a8024721ce93ad896558c66ec";
+  private language: string = "nl";  
 
   constructor(private http: HttpClient) { }
 
