@@ -11,7 +11,7 @@ export class MovieService {
 
   constructor(private http: HttpClient) { }
 
-     getMovie(title: string = "Star Wars"){
+     getMovie(title: string){
        return this.http.get<IMovie>(`https://api.themoviedb.org/3/search/movie?api_key=${this.APIkey}&query=${title}`);
      }
 
@@ -29,6 +29,10 @@ export class MovieService {
 
      getUpcomingMovies(){
        return this.http.get<IUpcomingMovies>(`https://api.themoviedb.org/3/movie/upcoming?api_key=${this.APIkey}&language=${this.language}&page=1`)
+     }
+
+     getMostPopularMovies(){
+      return this.http.get<IMostPopularMovies>(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${this.APIkey}`);
      }
 }
 
@@ -164,4 +168,12 @@ export interface IUpcomingMovies {
   total_results: number;
   dates: IDates;
   total_pages: number;
+}
+
+//Most popular movies
+export interface IMostPopularMovies {
+  page: number;
+  total_results: number;
+  total_pages: number;
+  results: IResult[];
 }
