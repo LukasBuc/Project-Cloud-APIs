@@ -8,7 +8,7 @@ import { TableModule } from 'primeng/table';
 import { PanelModule } from 'primeng/panel';
 import { InputTextModule } from 'primeng/inputtext';
 import { TabMenuModule } from 'primeng/tabmenu';
-
+import { PaginatorModule } from 'primeng/paginator';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -46,6 +46,7 @@ import { PersonInfoComponent } from './person-info/person-info.component';
     PanelModule,
     InputTextModule,
     TabMenuModule,
+    PaginatorModule,
     RouterModule.forRoot([
       { path: "search", component: MovieComponent},
       { path: "info", component: MovieInfoComponent},

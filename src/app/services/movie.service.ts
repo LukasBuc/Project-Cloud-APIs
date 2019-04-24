@@ -11,28 +11,28 @@ export class MovieService {
 
   constructor(private http: HttpClient) { }
 
-     getMovie(title: string){
-       return this.http.get<IMovie>(`https://api.themoviedb.org/3/search/movie?api_key=${this.APIkey}&query=${title}`);
+     getMovies(title: string, page: string = "1"){
+       return this.http.get<IMovie>(`https://api.themoviedb.org/3/search/movie?api_key=${this.APIkey}&query=${title}&page=${page}`);
      }
 
      getMovieInfo(Id: string){
        return this.http.get<IMovieInfo>(`https://api.themoviedb.org/3/movie/${Id}?api_key=${this.APIkey}&language=${this.language}`);
      }
 
-     getNowPlaying(Region: string = "BE"){ //Met region wordt bedoeld welk land, dit moet worden weergegeven met de ISO 3166-1 code
-       return this.http.get<INowPlaying>(`https://api.themoviedb.org/3/movie/now_playing?api_key=${this.APIkey}&language=en-US&page=1&region=${Region}`);      
-     }
-
      getMovieCredits(Id: string){
-       return this.http.get<IMovieCredits>(`https://api.themoviedb.org/3/movie/${Id}/credits?api_key=${this.APIkey}`);
+      return this.http.get<IMovieCredits>(`https://api.themoviedb.org/3/movie/${Id}/credits?api_key=${this.APIkey}`);
+    }
+
+     getNowPlaying(Region: string = "BE", page: string = "1"){ //Met region wordt bedoeld welk land, dit moet worden weergegeven met de ISO 3166-1 code
+       return this.http.get<INowPlaying>(`https://api.themoviedb.org/3/movie/now_playing?api_key=${this.APIkey}&language=en-US1&region=${Region}&page=${page}`);      
      }
 
-     getUpcomingMovies(){
-       return this.http.get<IUpcomingMovies>(`https://api.themoviedb.org/3/movie/upcoming?api_key=${this.APIkey}&language=${this.language}&page=1`)
+     getUpcomingMovies(page: string = "1"){
+       return this.http.get<IUpcomingMovies>(`https://api.themoviedb.org/3/movie/upcoming?api_key=${this.APIkey}&language=${this.language}&page=${page}`)
      }
 
-     getMostPopularMovies(){
-      return this.http.get<IMostPopularMovies>(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${this.APIkey}`);
+     getMostPopularMovies(page: string = "1"){
+      return this.http.get<IMostPopularMovies>(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${this.APIkey}&page=${page}&vote_count.gte=500`);
      }
 }
 

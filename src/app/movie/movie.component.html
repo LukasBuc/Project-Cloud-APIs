@@ -11,4 +11,5 @@
               <img [src]="movie.poster_path" (click)="getMovieId(i)" onmouseover="" style="cursor: pointer" [routerLink]="['/info']" height="450" width="300">       
         </div>
       </div>
+      <p-paginator *ngIf="pages" [rows]="numberOfPages" [totalRecords]="pages.total_results" (onPageChange)="paginate($event)"></p-paginator>
 </div>
