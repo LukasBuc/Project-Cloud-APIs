@@ -17,7 +17,8 @@ export class PersonService {
   }
 
   getMovieCredits(personId: string){
-    return this.http.get<IMovieCredits>(`https://api.themoviedb.org/3/person/${personId}/movie_credits?api_key=${this.APIkey}&language=en-US`)
+    //We sorteren op populariteit
+    return this.http.get<IMovieCredits>(`https://api.themoviedb.org/3/discover/movie?with_cast=${personId}&sort_by=vote_average.desc&api_key=${this.APIkey}`);
   }
 }
 
@@ -40,47 +41,26 @@ export interface IPersonInfo {
 }
 
 //getMovieCredits
-export interface ICast {
-  character: string;
-  credit_id: string;
-  release_date: string;
+export interface IMovie {
   vote_count: number;
-  video: boolean;
-  adult: boolean;
-  vote_average: number;
-  title: string;
-  genre_ids: number[];
-  original_language: string;
-  original_title: string;
-  popularity: number;
   id: number;
-  backdrop_path: string;
-  overview: string;
-  poster_path: string;
-}
-
-export interface ICrew {
-  id: number;
-  department: string;
-  original_language: string;
-  original_title: string;
-  job: string;
-  overview: string;
-  vote_count: number;
   video: boolean;
-  release_date: string;
   vote_average: number;
   title: string;
   popularity: number;
+  poster_path: string;
+  original_language: string;
+  original_title: string;
   genre_ids: number[];
   backdrop_path: string;
   adult: boolean;
-  poster_path: string;
-  credit_id: string;
+  overview: string;
+  release_date: string;
 }
 
 export interface IMovieCredits {
-  cast: ICast[];
-  crew: ICrew[];
-  id: number;
+  page: number;
+  total_results: number;
+  total_pages: number;
+  results: IMovie[];
 }

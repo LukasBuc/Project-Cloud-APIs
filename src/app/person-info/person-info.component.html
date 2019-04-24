@@ -5,9 +5,9 @@
   <p>{{personInfo.biography}}</p>
 
   <div *ngIf="MovieCredits">
-    <ng-container *ngFor="let credit of MovieCredits.cast; let i=index">
-      <li class="dropdown-item" *ngIf="i<3">{{credit.original_title}}</li>
-      <img [src]="credit.poster_path" *ngIf="i<3" (click)="getMovieId(i)" onmouseover="" style="cursor: pointer" [routerLink]="['/info']">
+    <ng-container *ngFor="let movie of MovieCredits.results; let i=index">
+      <li class="dropdown-item" *ngIf="i<3">{{movie.original_title}}</li>
+      <img [src]="movie.poster_path" *ngIf="i<3" (click)="getMovieId(i)" onmouseover="" style="cursor: pointer" [routerLink]="['/info']">
     </ng-container>
   </div>
 </div>

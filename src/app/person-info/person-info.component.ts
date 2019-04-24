@@ -33,7 +33,6 @@ export class PersonInfoComponent implements OnInit {
   searchPersonDetails(){
     this.personSvc.getPersonInfo(this.sharedSvc.getPersonId()).subscribe((result) => {
       this.personInfo = result;
-      console.table(this.personInfo);
 
       this.personInfo.profile_path = this.poster_base_url + this.personInfo.profile_path;
     })
@@ -42,16 +41,15 @@ export class PersonInfoComponent implements OnInit {
   searchMovieCredits(){
     this.personSvc.getMovieCredits(this.sharedSvc.getPersonId()).subscribe((result) => {
       this.MovieCredits = result;
-      console.table(this.MovieCredits);
 
       for (let i = 0; i < 3; i++) {
-        this.MovieCredits.cast[i].poster_path = this.poster_base_url + this.MovieCredits.cast[i].poster_path;
+        this.MovieCredits.results[i].poster_path = this.poster_base_url + this.MovieCredits.results[i].poster_path;
       }
     })
   }
 
   getMovieId(listIndex: number){
-    this.movieId = this.MovieCredits.cast[listIndex].id.toString();
+    this.movieId = this.MovieCredits.results[listIndex].id.toString();
 
     this.sharedSvc.setId(this.movieId);
   }
