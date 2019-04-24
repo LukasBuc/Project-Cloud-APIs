@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedinfoService } from '../services/shared-info.service';
-import { PersonService, IPersonInfo } from '../services/person.service';
+import { PersonService, IPersonInfo, IMovieCredits } from '../services/person.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,8 +10,10 @@ import { Router } from '@angular/router';
 })
 export class PersonInfoComponent implements OnInit {
 
-  // personId: string;
   personInfo: IPersonInfo;
+  MovieCredits: IMovieCredits;
+
+  movieId: string;
 
   poster_base_url: string = 'https://image.tmdb.org/t/p/w300';
 
@@ -20,6 +22,7 @@ export class PersonInfoComponent implements OnInit {
   ngOnInit() {
     if(this.sharedSvc.getPersonId() != ""){
       this.searchPersonDetails();
+      this.searchMovieCredits();
     }
     else{
       console.log("Geen persoon id gevonden terug naar search!")
@@ -36,4 +39,20 @@ export class PersonInfoComponent implements OnInit {
     })
   }
 
+  searchMovieCredits(){
+    this.personSvc.getMovieCredits(this.sharedSvc.getPersonId()).subscribe((result) => {
+      this.MovieCredits = result;
+      console.table(this.MovieCredits);
+
+      for (let i = 0; i < 3; i++) {
+        this.MovieCredits.cast[i].poster_path = this.poster_base_url + this.MovieCredits.cast[i].poster_path;
+      }
+    })
+  }
+
+  getMovieId(listIndex: number){
+    this.movieId = this.MovieCredits.cast[listIndex].id.toString();
+
+    this.sharedSvc.setId(this.movieId);
+  }
 }
