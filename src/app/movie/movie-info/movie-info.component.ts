@@ -40,7 +40,6 @@ export class MovieInfoComponent implements OnInit {
 
       this.movieSvc.getMovieInfo(this.movieId).subscribe((result) => {
         this.movieInfo = result;
-        console.table(this.movieInfo);
 
         this.poster_full_url = this.poster_base_url + this.movieInfo.poster_path;
         this.movieTitle = this.movieInfo.original_title;
@@ -58,7 +57,6 @@ export class MovieInfoComponent implements OnInit {
           //profile_path aanpassen naar volledige url
           this.actors[i].profile_path = this.actorImgBaseUrl + this.actors[i].profile_path; 
         }
-        console.table(this.actors);
       })
     }  
   }

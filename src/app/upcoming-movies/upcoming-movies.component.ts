@@ -23,7 +23,6 @@ export class UpcomingMoviesComponent implements OnInit {
   searchUpcomingMovies(){
     this.svc.getUpcomingMovies().subscribe((result) => {
       this.movieList = result.results;
-      console.table(result.results);
 
       //Lijst van poster url's ophalen en volledig maken
       this.posterList = new Array(result.results.length);
@@ -40,6 +39,5 @@ export class UpcomingMoviesComponent implements OnInit {
     this.movieId = this.movieList[listIndex].id.toString();
 
     this.sharedSvc.setId(this.movieId);
-    console.log(this.sharedSvc.getId());
   }
 }

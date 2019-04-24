@@ -8,7 +8,7 @@
       <div class="p-grid">
         <div class="p-col" *ngFor="let movie of movieList; let i=index">
               <p class="film-titel">{{movie.title}}</p>
-              <img [src]="posterList[i]" (click)="getMovieId(i)" onmouseover="" style="cursor: pointer" [routerLink]="['/info']" height="450" width="300">       
+              <img [src]="movie.poster_path" (click)="getMovieId(i)" onmouseover="" style="cursor: pointer" [routerLink]="['/info']" height="450" width="300">       
         </div>
       </div>
 </div>
