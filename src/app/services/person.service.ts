@@ -17,8 +17,8 @@ export class PersonService {
   }
 
   getMovieCredits(personId: string){
-    //We sorteren op populariteit
-    return this.http.get<IMovieCredits>(`https://api.themoviedb.org/3/discover/movie?with_cast=${personId}&sort_by=vote_average.desc&api_key=${this.APIkey}`);
+    //We sorteren op populariteit, de votecount moet minstens 50 zijn
+    return this.http.get<IMovieCredits>(`https://api.themoviedb.org/3/discover/movie?with_cast=${personId}&sort_by=vote_average.desc&api_key=${this.APIkey}&vote_count.gte=50`);
   }
 }
 
