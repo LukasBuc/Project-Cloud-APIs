@@ -38,9 +38,6 @@ export class MovieComponent implements OnInit {
 
   searchMovie(userInput: string){
     if(userInput != ""){
-      
-      
-
       //Als er nog niet gezocht is naar een film boolean op true zetten en huidige paginanummer resetten
       if (!this.searchedMovie) {
         this.searchedMovie = true;
@@ -101,13 +98,11 @@ export class MovieComponent implements OnInit {
      this.temporaryPageNr++
      this.currentPage = this.temporaryPageNr.toString();
 
-     console.log(event.rows);
-
     if(!this.searchedMovie){
       this.searchMostPopularMovie();
     }
     else{
       this.searchMovie(this.sharedSvc.getsearchTitle());
-    }   
+    } 
   }
 }
