@@ -1,0 +1,14 @@
+C:\Users\Lukas\Desktop\Project-Cloud-APIs\FilmCollectionAPI\FilmCollectionAPI\bin\Debug\netcoreapp2.1\FilmCollectionAPI.deps.json
+C:\Users\Lukas\Desktop\Project-Cloud-APIs\FilmCollectionAPI\FilmCollectionAPI\bin\Debug\netcoreapp2.1\FilmCollectionAPI.runtimeconfig.json
+C:\Users\Lukas\Desktop\Project-Cloud-APIs\FilmCollectionAPI\FilmCollectionAPI\bin\Debug\netcoreapp2.1\FilmCollectionAPI.runtimeconfig.dev.json
+C:\Users\Lukas\Desktop\Project-Cloud-APIs\FilmCollectionAPI\FilmCollectionAPI\bin\Debug\netcoreapp2.1\FilmCollectionAPI.dll
+C:\Users\Lukas\Desktop\Project-Cloud-APIs\FilmCollectionAPI\FilmCollectionAPI\obj\Debug\netcoreapp2.1\FilmCollectionAPI.csprojAssemblyReference.cache
+C:\Users\Lukas\Desktop\Project-Cloud-APIs\FilmCollectionAPI\FilmCollectionAPI\obj\Debug\netcoreapp2.1\FilmCollectionAPI.csproj.CoreCompileInputs.cache
+C:\Users\Lukas\Desktop\Project-Cloud-APIs\FilmCollectionAPI\FilmCollectionAPI\obj\Debug\netcoreapp2.1\FilmCollectionAPI.RazorAssemblyInfo.cache
+C:\Users\Lukas\Desktop\Project-Cloud-APIs\FilmCollectionAPI\FilmCollectionAPI\obj\Debug\netcoreapp2.1\FilmCollectionAPI.RazorAssemblyInfo.cs
+C:\Users\Lukas\Desktop\Project-Cloud-APIs\FilmCollectionAPI\FilmCollectionAPI\obj\Debug\netcoreapp2.1\FilmCollectionAPI.AssemblyInfoInputs.cache
+C:\Users\Lukas\Desktop\Project-Cloud-APIs\FilmCollectionAPI\FilmCollectionAPI\obj\Debug\netcoreapp2.1\FilmCollectionAPI.AssemblyInfo.cs
+C:\Users\Lukas\Desktop\Project-Cloud-APIs\FilmCollectionAPI\FilmCollectionAPI\obj\Debug\netcoreapp2.1\FilmCollectionAPI.RazorTargetAssemblyInfo.cache
+C:\Users\Lukas\Desktop\Project-Cloud-APIs\FilmCollectionAPI\FilmCollectionAPI\bin\Debug\netcoreapp2.1\FilmCollectionAPI.pdb
+C:\Users\Lukas\Desktop\Project-Cloud-APIs\FilmCollectionAPI\FilmCollectionAPI\obj\Debug\netcoreapp2.1\FilmCollectionAPI.dll
+C:\Users\Lukas\Desktop\Project-Cloud-APIs\FilmCollectionAPI\FilmCollectionAPI\obj\Debug\netcoreapp2.1\FilmCollectionAPI.pdb
