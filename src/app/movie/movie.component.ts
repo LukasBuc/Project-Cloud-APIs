@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { MovieService, IResult, IMostPopularMovies} from '../services/movie.service';
+import { MovieService, IResult, IMovie} from '../services/movie.service';
 import { SharedinfoService } from '../services/shared-info.service'
 import { Paginator } from 'primeng/paginator';
 
@@ -11,10 +11,11 @@ import { Paginator } from 'primeng/paginator';
 export class MovieComponent implements OnInit {
   movieList: IResult[];
   movieId: string;
-  pages: IMostPopularMovies;
-  currentPage: string = "1";
-  temporaryPageNr: number;
 
+  //Totaal aantal pagina's
+  pages: IMovie;
+
+  currentPage: number = 1;
   numberOfPages: number;
   previousSearch: string = "";
 
@@ -41,19 +42,19 @@ export class MovieComponent implements OnInit {
       //Als er nog niet gezocht is naar een film boolean op true zetten en huidige paginanummer resetten
       if (!this.searchedMovie) {
         this.searchedMovie = true;
-        this.currentPage = "1";
+        this.currentPage = 1;
       }
 
       if(this.previousSearch != userInput){
         this.previousSearch = userInput;
-        this.currentPage = "1";
+        this.currentPage = 1;
       }
 
-      this.svc.getMovies(userInput, this.currentPage).subscribe((result) => {
+      this.svc.getMovies(userInput, this.currentPage.toString()).subscribe((result) => {
 
         this.movieList = result.results;
         this.pages = result;
-        this.numberOfPages =  (this.pages.total_results / this.pages.total_pages);
+        this.numberOfPages =  this.pages.total_results / this.pages.total_pages;
 
         this.sharedSvc.setSearchTitle(userInput);
         
@@ -71,10 +72,10 @@ export class MovieComponent implements OnInit {
     //Als er al wel gezocht is naar een film boolean op false zetten en huidige paginanummer resetten
     if (this.searchedMovie) {
       this.searchedMovie = false;
-      this.currentPage = "1";
+      this.currentPage = 1;
     }
 
-    this.svc.getMostPopularMovies(this.currentPage).subscribe((result) => {
+    this.svc.getMostPopularMovies(this.currentPage.toString()).subscribe((result) => {
       
       this.movieList = result.results;
       this.pages = result;
@@ -94,9 +95,7 @@ export class MovieComponent implements OnInit {
 
   paginate(event){
     //event.page geeft als eerste pagina 0 terug, maar in de API is de eerste pagina 1
-     this.temporaryPageNr = parseInt(event.page);
-     this.temporaryPageNr++
-     this.currentPage = this.temporaryPageNr.toString();
+     this.currentPage = parseInt(event.page) + 1;
 
     if(!this.searchedMovie){
       this.searchMostPopularMovie();
