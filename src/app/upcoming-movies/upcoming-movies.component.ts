@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieService, IResult } from '../services/movie.service';
+import { MovieService, IResult, IMoviesWithDates } from '../services/movie.service';
 import { SharedinfoService } from '../services/shared-info.service';
 
 @Component({
@@ -9,10 +9,14 @@ import { SharedinfoService } from '../services/shared-info.service';
 })
 export class UpcomingMoviesComponent implements OnInit {
   movieList: IResult[];
-  posterList: string[];
   movieId: string;
 
   poster_base_url: string = 'https://image.tmdb.org/t/p/w300';
+
+  pages: IMoviesWithDates;
+
+  currenpage: Number = 1;
+  numberOfPages: Number;
 
   constructor(private svc: MovieService, private sharedSvc: SharedinfoService) { }
 
@@ -21,15 +25,14 @@ export class UpcomingMoviesComponent implements OnInit {
   }
 
   searchUpcomingMovies(){
-    this.svc.getUpcomingMovies().subscribe((result) => {
+    this.svc.getUpcomingMovies(this.currenpage.toString()).subscribe((result) => {
       this.movieList = result.results;
+      this.pages = result;
+      this.numberOfPages = this.pages.total_results / this.pages.total_pages;
 
       //Lijst van poster url's ophalen en volledig maken
-      this.posterList = new Array(result.results.length);
-      for(let i = 0; i < result.results.length; i++){
-
-        //TODO: checken of er een poster is, indien niet zelf error poster toevoegen die aangeeft dat er geen poster is
-      this.posterList[i] = this.poster_base_url + result.results[i].poster_path;
+      for (let i = 0; i < this.movieList.length; i++) {
+        this.movieList[i].poster_path = this.poster_base_url + this.movieList[i].poster_path       
       }
     })
     //TODO: datum toevoegen wanneer film uitkomt
@@ -37,7 +40,11 @@ export class UpcomingMoviesComponent implements OnInit {
 
   getMovieId(listIndex: number){
     this.movieId = this.movieList[listIndex].id.toString();
-
     this.sharedSvc.setId(this.movieId);
+  }
+
+  paginate(event){
+    this.currenpage = parseInt(event.page) + 1;
+    this.searchUpcomingMovies();
   }
 }

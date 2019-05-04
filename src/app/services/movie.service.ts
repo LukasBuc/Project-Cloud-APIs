@@ -23,16 +23,17 @@ export class MovieService {
       return this.http.get<IMovieCredits>(`https://api.themoviedb.org/3/movie/${Id}/credits?api_key=${this.APIkey}`);
     }
 
-     getNowPlaying(Region: string = "BE", page: string = "1"){ //Met region wordt bedoeld welk land, dit moet worden weergegeven met de ISO 3166-1 code
-       return this.http.get<INowPlaying>(`https://api.themoviedb.org/3/movie/now_playing?api_key=${this.APIkey}&language=en-US1&region=${Region}&page=${page}`);      
+     getNowPlaying(page: string = "1", Region: string = "NL"){ //Met region wordt bedoeld welk land, dit moet worden weergegeven met de ISO 3166-1 code
+                                                               //BE voor Belgie, NL voor Nederland. We gebruiken NL omdat de data van BE slecht is
+       return this.http.get<IMoviesWithDates>(`https://api.themoviedb.org/3/movie/now_playing?api_key=${this.APIkey}&language=en-US1&region=${Region}&page=${page}`);      
      }
 
      getUpcomingMovies(page: string = "1"){
-       return this.http.get<IUpcomingMovies>(`https://api.themoviedb.org/3/movie/upcoming?api_key=${this.APIkey}&language=${this.language}&page=${page}`)
+       return this.http.get<IMoviesWithDates>(`https://api.themoviedb.org/3/movie/upcoming?api_key=${this.APIkey}&language=${this.language}&page=${page}`)
      }
 
      getMostPopularMovies(page: string = "1"){
-      return this.http.get<IMostPopularMovies>(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${this.APIkey}&page=${page}&vote_count.gte=500`);
+      return this.http.get<IMovie>(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${this.APIkey}&page=${page}&vote_count.gte=500`);
      }
 }
 
@@ -125,7 +126,7 @@ export interface IDates {
   minimum: string;
 }
 
-export interface INowPlaying {
+export interface IMoviesWithDates {
   results: IResult[];
   page: number;
   total_results: number;
@@ -159,21 +160,4 @@ export interface IMovieCredits {
   id: number;
   cast: ICast[];
   crew: ICrew[];
-}
-
- //Upcoming movies
-export interface IUpcomingMovies {
-  results: IResult[];
-  page: number;
-  total_results: number;
-  dates: IDates;
-  total_pages: number;
-}
-
-//Most popular movies
-export interface IMostPopularMovies {
-  page: number;
-  total_results: number;
-  total_pages: number;
-  results: IResult[];
 }

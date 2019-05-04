@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieService, IResult } from '../services/movie.service';
+import { MovieService, IResult, IMoviesWithDates } from '../services/movie.service';
 import { SharedinfoService } from '../services/shared-info.service';
 
 @Component({
@@ -9,10 +9,17 @@ import { SharedinfoService } from '../services/shared-info.service';
 })
 export class NowPlayingComponent implements OnInit {
   movieList: IResult[];
-  posterList: string[];
+  //posterList: string[];
   movieId: string;
 
   poster_base_url: string = 'https://image.tmdb.org/t/p/w300';
+
+
+  currentPage: number = 1;
+  numberOfPages: number;
+  pages: IMoviesWithDates;
+
+
 
   constructor(private svc: MovieService, private sharedSvc: SharedinfoService) { }
 
@@ -21,15 +28,15 @@ export class NowPlayingComponent implements OnInit {
   }
 
   searchNowPlaying(){
-    this.svc.getNowPlaying().subscribe((result) => {
+    this.svc.getNowPlaying(this.currentPage.toString()).subscribe((result) => {
+
         this.movieList = result.results;
+        this.pages = result;
+        this.numberOfPages = this.pages.total_results / this.pages.total_pages;
 
         //Lijst van poster url's ophalen en volledig maken
-        this.posterList = new Array(result.results.length);
-        for(let i = 0; i < result.results.length; i++){
-
-          //TODO: checken of er een poster is, indien niet zelf error poster toevoegen die aangeeft dat er geen poster is
-        this.posterList[i] = this.poster_base_url + result.results[i].poster_path;
+        for (let i = 0; i < this.movieList.length; i++) {
+          this.movieList[i].poster_path = this.poster_base_url + this.movieList[i].poster_path;
         }
     })
   }
@@ -38,5 +45,12 @@ export class NowPlayingComponent implements OnInit {
     this.movieId = this.movieList[listIndex].id.toString();
 
     this.sharedSvc.setId(this.movieId);
+  }
+
+  paginate(event){
+    //event.page geeft als eerste pagina 0 terug, maar in de API is de eerste pagina 1
+    this.currentPage = parseInt(event.page) + 1;
+
+    this.searchNowPlaying();
   }
 }
