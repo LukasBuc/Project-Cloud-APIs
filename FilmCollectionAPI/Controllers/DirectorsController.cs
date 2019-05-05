@@ -49,5 +49,39 @@ namespace FilmCollectionAPI.Controllers
             }
             return searchedDirector.Films.ToList();
         }
+
+        [Route("{id}")]
+        [HttpDelete] //Director verwijderen
+        public IActionResult DeleteDirector(int id)
+        {
+            var directorToDelete = _context.Directors.Find(id);
+
+            if(directorToDelete != null)
+            {
+                _context.Directors.Remove(directorToDelete);
+                _context.SaveChanges();
+                return NoContent();
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult<Director> AddDirector([FromBody]Director director)
+        {
+            _context.Directors.Add(director);
+            _context.SaveChanges();
+            return Created("", director);
+        }
+
+        [HttpPut]
+        public ActionResult<Director> UpdateDirector([FromBody]Director updateDirector)
+        {
+            _context.Directors.Update(updateDirector);
+            _context.SaveChanges();
+            return Created("", updateDirector);
+        }
     }
 }
