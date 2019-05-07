@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedinfoService } from '../services/shared-info.service';
-import { PersonService, IPersonInfo, IMovieCredits } from '../services/person.service';
+import { PersonService, IPersonInfo, IMovieCredits, IMovie } from '../services/person.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -42,15 +42,14 @@ export class PersonInfoComponent implements OnInit {
     this.personSvc.getMovieCredits(this.sharedSvc.getPersonId()).subscribe((result) => {
       this.MovieCredits = result;
 
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < result.results.length; i++) {
         this.MovieCredits.results[i].poster_path = this.poster_base_url + this.MovieCredits.results[i].poster_path;
       }
     })
   }
 
-  getMovieId(listIndex: number){
-    this.movieId = this.MovieCredits.results[listIndex].id.toString();
-
+  getMovieId(movie: IMovie){
+    this.movieId = movie.id.toString();
     this.sharedSvc.setId(this.movieId);
   }
 }

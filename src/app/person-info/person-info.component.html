@@ -1,13 +1,25 @@
 <div class="film-weergave" *ngIf="personInfo">
-  <img [src]="personInfo.profile_path">
-  <p>{{personInfo.name}}</p>
-  <p>{{personInfo.birthday}}</p>
-  <p>{{personInfo.biography}}</p>
+  <div class="ui-g" *ngIf="MovieCredits">
+      <div class="ui-g-3"><img  [src]="personInfo.profile_path"></div>
+      <div class="ui-g-8 ui-g-nopad">
+          <div class="ui-g-12"><h1>{{personInfo.name}}</h1></div>
+          <div class="ui-g-12"><p>Geboortedatum: {{personInfo.birthday | date:'d LLLL yyyy'}}</p></div>
+          <div class="ui-g-12"><p>{{personInfo.biography}}</p></div>
+          <div class="ui-g-12">
 
-  <div *ngIf="MovieCredits">
-    <ng-container *ngFor="let movie of MovieCredits.results; let i=index">
-      <li class="dropdown-item" *ngIf="i<3">{{movie.original_title}}</li>
-      <img [src]="movie.poster_path" *ngIf="i<3" (click)="getMovieId(i)" onmouseover="" style="cursor: pointer" [routerLink]="['/info']">
-    </ng-container>
+              <p-carousel headerText="Films" [value]="MovieCredits.results" easing="easeOutStrong" numVisible=5>
+                  <ng-template let-movie let-i="index" pTemplate="movie">
+                      <div class="ui-grid ui-grid-responsive">
+                          <div class="ui-grid-row">  
+                              <div class="ui-grid-col-12"><p class="titleMovie">{{movie.original_title}}</p></div>
+                          </div>
+                          <div class="ui-grid-row">   
+                              <div class="ui-grid-col-12"><img [src]="movie.poster_path" (click)=getMovieId(movie) onmouseover="" style="cursor: pointer" [routerLink]="['/info']"></div>
+                          </div>
+                      </div>
+                  </ng-template>
+              </p-carousel>
+          </div>
+      </div>      
   </div>
 </div>
