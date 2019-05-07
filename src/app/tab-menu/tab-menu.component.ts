@@ -14,7 +14,6 @@ export class TabMenuComponent implements OnInit {
 
     ngOnInit() {
         this.items = [
-            {label: 'Home', icon: 'pi pi-home'},
             {label: 'Zoeken', icon: 'pi pi-search', routerLink: ['/search']},
             {label: 'Nu in de cinema', icon: 'pi pi-image', routerLink: ['/nowPlaying']},
             {label: 'Binnekort in de cinema', icon: 'pi pi-angle-double-right', routerLink: ['/upcomingMovies']}
