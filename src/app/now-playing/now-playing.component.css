@@ -2,3 +2,7 @@
     padding-left: 45px;
     padding-right: 45px;
 }
+
+body .ui-carousel .ui-carousel-viewport .ui-carousel-items .ui-carousel-item {
+    border: none;
+}

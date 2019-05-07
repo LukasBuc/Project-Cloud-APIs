@@ -1,3 +1,7 @@
+li {
+    margin-left: 12.6px;
+}
+
 .ui-grid-row img {
     height: 200px;
 
@@ -8,8 +12,4 @@
 
   .ui-grid-row img:hover {
     opacity: 0.3;
-  }
-
-  .titleMovie{
-    height: 21px;
   }
