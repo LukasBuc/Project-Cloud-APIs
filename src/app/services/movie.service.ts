@@ -35,6 +35,10 @@ export class MovieService {
      getMostPopularMovies(page: string = "1"){
       return this.http.get<IMovie>(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${this.APIkey}&page=${page}&vote_count.gte=500`);
      }
+
+     getMovieReviews(Id: string){
+       return this.http.get<IReviews>(`https://api.themoviedb.org/3/movie/${Id}/reviews?api_key=${this.APIkey}`);
+     }
 }
 
 // getMovie
@@ -160,4 +164,19 @@ export interface IMovieCredits {
   id: number;
   cast: ICast[];
   crew: ICrew[];
+}
+
+export interface IReview {
+  author: string;
+  content: string;
+  id: string;
+  url: string;
+}
+
+export interface IReviews {
+  id: number;
+  page: number;
+  results: IReview[];
+  total_pages: number;
+  total_results: number;
 }

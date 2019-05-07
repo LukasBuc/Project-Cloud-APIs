@@ -1,0 +1,48 @@
+<div class="film-weergave" *ngIf="movieInfo">
+    <div class="ui-g">
+        <div class="ui-g-3"><img  [src]="poster_full_url"></div>
+        <div class="ui-g-8 ui-g-nopad">
+            <div class="ui-g-12"><h1>{{movieTitle}}</h1></div>
+            <div class="ui-g-12"><p>{{description}}</p></div>
+            <div class="ui-g-12"><p>Budget: {{budget | currency:"USD"}}</p></div>
+            <div class="ui-g-6"><p>Release datum: {{releaseDate | date:'d LLLL yyyy'}}</p></div>
+            <div class="ui-g-12">
+              <!-- TODO: opmaak genres-->
+              <p>Genre: </p>
+              <li *ngFor="let genre of genres">
+              {{genre.name}}
+              </li>
+            </div>
+            <div class="ui-g-12">
+                <p-carousel headerText="Acteurs" [value]="actors" easing="easeOutStrong" numVisible=6>
+                    <ng-template let-actor let-i="index" pTemplate="actor">
+                        <div class="ui-grid ui-grid-responsive">
+                            <div class="ui-grid-row">  
+                                <div class="ui-grid-col-12">{{actor.name}}</div>
+                            </div>
+                            <div class="ui-grid-row">   
+                                <div class="ui-grid-col-12"><img [src]="actor.profile_path" (click)=getActorId(actor) onmouseover="" style="cursor: pointer" [routerLink]="['/personInfo']"></div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </p-carousel>
+            </div>
+            <div class="ui-g-12">
+                <p-panel header="Reviews" [toggleable]="true" [collapsed]="true">
+                    <p-dataScroller [value]="reviews" [rows]="5" [inline]="true" scrollHeight="500px">
+                        <ng-template let-review pTemplate="item">
+                            <div class="ui-g review-item">
+                                <div class="ui-g-12 ui-md-9">
+                                    <div class="ui-g">
+                                        <div class="ui-g-2 ui-sm-6">{{review.author}}</div>
+                                        <div class="ui-g-10 ui-sm-6">{{review.content}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </p-dataScroller>
+                </p-panel>                       
+            </div>
+        </div>      
+    </div>   
+</div>
