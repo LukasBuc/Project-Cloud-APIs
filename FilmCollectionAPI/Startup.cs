@@ -43,6 +43,11 @@ namespace FilmCollectionAPI
         app.UseDeveloperExceptionPage();
       }
       DBInitializer.Initialize(context);
+
+      app.UseCors(builder =>
+          builder.AllowAnyOrigin()
+                 .AllowAnyMethod()
+                 .AllowAnyHeader());
       app.UseMvc();
     }
   }
