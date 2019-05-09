@@ -20,6 +20,7 @@ export class MovieInfoComponent implements OnInit {
   genres: IGenre[];
   description: string;
   releaseDate: string;
+  vote_average: string;
 
   //Credits
   actors: ICast[];
@@ -68,6 +69,7 @@ export class MovieInfoComponent implements OnInit {
       this.description = this.movieInfo.overview;
       this.genres = this.movieInfo.genres;
       this.releaseDate = this.movieInfo.release_date;
+      this.vote_average = this.movieInfo.vote_average.toString();
     })
   }
 
