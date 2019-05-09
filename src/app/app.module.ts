@@ -26,6 +26,8 @@ import { NowPlayingComponent } from './now-playing/now-playing.component';
 import { UpcomingMoviesComponent } from './upcoming-movies/upcoming-movies.component';
 import { PersonService } from './services/person.service';
 import { PersonInfoComponent } from './person-info/person-info.component';
+import { MovieCollectionComponent } from './movie-collection/movie-collection.component';
+import { MovieCollectionService } from './services/movie-collection.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { PersonInfoComponent } from './person-info/person-info.component';
     TabMenuComponent,
     NowPlayingComponent,
     UpcomingMoviesComponent,
-    PersonInfoComponent
+    PersonInfoComponent,
+    MovieCollectionComponent
   ],
   imports: [
     BrowserModule,
@@ -57,13 +60,15 @@ import { PersonInfoComponent } from './person-info/person-info.component';
       { path: "nowPlaying", component: NowPlayingComponent},
       { path: "upcomingMovies", component: UpcomingMoviesComponent},
       { path: "personInfo", component: PersonInfoComponent },
+      { path: "myCollection", component: MovieCollectionComponent },
       { path: "", redirectTo: "search", pathMatch: "full"}
     ])
   ],
   providers: [
     MovieService,
     SharedinfoService,
-    PersonService
+    PersonService,
+    MovieCollectionService
   ],
   bootstrap: [AppComponent]
 })

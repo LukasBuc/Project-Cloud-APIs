@@ -16,7 +16,8 @@ export class TabMenuComponent implements OnInit {
         this.items = [
             {label: 'Zoeken', icon: 'pi pi-search', routerLink: ['/search']},
             {label: 'Nu in de cinema', icon: 'pi pi-image', routerLink: ['/nowPlaying']},
-            {label: 'Binnekort in de cinema', icon: 'pi pi-angle-double-right', routerLink: ['/upcomingMovies']}
+            {label: 'Binnekort in de cinema', icon: 'pi pi-angle-double-right', routerLink: ['/upcomingMovies']},
+            {label: 'Mijn collectie', icon: 'pi pi-folder-open', routerLink: ['/myCollection']}
         ];
     }
 }
