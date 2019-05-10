@@ -1,3 +1,55 @@
-<p>
-  movie-collection works!
-</p>
+<!-- <p-dataView [value]="myCollection">
+  <ng-template let-movie pTemplate="listItem">
+      <div>
+          {{movie.title}}
+      </div>
+  </ng-template>
+</p-dataView> -->
+
+
+
+<p-dataView #dv [value]="myCollection" [paginator]="true" [rows]="20" paginatorPosition="both" filterBy="title"
+[sortField]="sortField" [sortOrder]="sortOrder">
+<p-header>
+    <div class="ui-helper-clearfix">
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-4">
+                <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By" (onChange)="onSortChange($event)" [autoWidth]="false" [style]="{'min-width':'15em'}"></p-dropdown>
+            </div>
+            <div class="ui-g-6 ui-md-4 filter-container">
+                <div style="position:relative">
+                    <input type="search" pInputText placeholder="Zoek op titel" [(ngModel)]="userInput" (keyup)="getMovieByTitle()">
+                </div>
+            </div>
+        </div>
+    </div>
+</p-header>
+<ng-template let-movie pTemplate="listItem">
+    <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+        <div class="ui-g-12 ui-md-3" style="text-align:center">
+            <!-- <img src="assets/showcase/images/demo/car/{{car.brand}}.png"> -->
+        </div>
+        <div class="ui-g-12 ui-md-8 movie-details">
+            <div class="ui-g">
+                <div class="ui-g-2 ui-sm-6">Title: </div>
+                <div class="ui-g-10 ui-sm-6"><b>{{movie.title}}</b></div>
+
+                <div class="ui-g-2 ui-sm-6">Year: </div>
+                <div class="ui-g-10 ui-sm-6"><b>{{movie.year}}</b></div>
+
+                <div class="ui-g-2 ui-sm-6">Genre: </div>
+                <div class="ui-g-10 ui-sm-6"><b>{{movie.genre}}</b></div>
+
+                <div class="ui-g-2 ui-sm-6">Runtime: </div>
+                <div class="ui-g-10 ui-sm-6"><b>{{movie.runtime}}</b></div>
+
+                <div class="ui-g-2 ui-sm-6">MediaType: </div>
+                <div class="ui-g-10 ui-sm-6"><b>{{movie.mediaType}}</b></div>
+            </div>
+        </div>
+        <div class="ui-g-12 ui-md-1 search-icon">
+            <button pButton type="button" icon="pi pi-search" (click)="selectMovie(movie)"></button>
+        </div>
+    </div>
+</ng-template>
+</p-dataView>

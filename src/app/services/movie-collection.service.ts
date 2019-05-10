@@ -12,8 +12,16 @@ export class MovieCollectionService {
     return this.http.get<IMovieCollection[]>(`http://localhost:64098/api/films`);
   }
 
+  getMoviesSorted(sortBy: string, direction?: string){
+    return this.http.get<IMovieCollection[]>(`http://localhost:64098/api/films?sort=${sortBy}&direction=${direction}`);
+  }
+
+  getMoviesByTitle(title: string){
+    return this.http.get<IMovieCollection[]>(`http://localhost:64098/api/films?title=${title}`);
+  }
+
   getDirectors(){
-    return this.http.get<IDirector>(`http://localhost:64098/api/directors`);
+    return this.http.get<IDirector[]>(`http://localhost:64098/api/directors`);
   }
 }
 
