@@ -21,25 +21,76 @@ namespace FilmCollectionAPI.Controllers
       }
 
       [HttpGet] // api/films
-      public List<Film> GetFilms(string sort, string direction)
+      public List<Film> GetFilms(string title, string genre, string mediaType, int year, string sort, string direction, int? page, int length = 20)
       {
-          IQueryable<Film> query = _context.Films;
+      IQueryable<Film> query = _context.Films.Include(d => d.Director);
 
-          switch (sort)
+          switch (sort) //films?sort=title&dir=desc
           {
               case "title":
               if (direction == "asc")
               {
                   query = query.OrderBy(b => b.Title);
               }
-              else
+              else if(direction == "desc")
               {
                   query = query.OrderByDescending(b => b.Title);
-                }
+              }
+              break;
+
+              case "genre":
+              if (direction == "asc")
+              {
+                  query = query.OrderBy(b => b.Genre);
+              }
+              else if (direction == "desc")
+              {
+                  query = query.OrderByDescending(b => b.Genre);
+              }
+              break;
+
+              case "year":
+              if (direction == "asc")
+              {
+                  query = query.OrderBy(b => b.Year);
+              }
+              else if (direction == "desc")
+              {
+                  query = query.OrderByDescending(b => b.Year);
+              }
               break;
           }
 
-          return query.ToList();
+        if (!string.IsNullOrWhiteSpace(title))
+        {
+            query = query.Where(d => d.Title == title);
+        }
+
+        if (!string.IsNullOrWhiteSpace(genre))
+        {
+            query = query.Where(d => d.Genre == genre);
+        }
+
+        if (!string.IsNullOrWhiteSpace(mediaType))
+        {
+            query = query.Where(d => d.MediaType == mediaType);
+        }
+
+        //if (!string.IsNullOrWhiteSpace(year.ToString()))
+        //{
+        //    query = query.Where(d => d.Year == year);
+        //}
+
+        
+
+        if (page.HasValue)
+        {
+            query = query.Skip(page.Value * length);
+        }
+
+        query = query.Take(length);
+
+        return query.ToList();
       }
 
       [Route("{id}")]

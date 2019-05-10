@@ -12,3 +12,17 @@ C:\Users\Lukas\Desktop\Project-Cloud-APIs\FilmCollectionAPI\obj\Debug\netcoreapp
 C:\Users\Lukas\Desktop\Project-Cloud-APIs\FilmCollectionAPI\obj\Debug\netcoreapp2.1\FilmCollectionAPI.RazorTargetAssemblyInfo.cache
 C:\Users\Lukas\Desktop\Project-Cloud-APIs\FilmCollectionAPI\obj\Debug\netcoreapp2.1\FilmCollectionAPI.dll
 C:\Users\Lukas\Desktop\Project-Cloud-APIs\FilmCollectionAPI\obj\Debug\netcoreapp2.1\FilmCollectionAPI.pdb
+D:\School\Cloud APIs\Project-Cloud-APIs\FilmCollectionAPI\bin\Debug\netcoreapp2.1\FilmCollectionAPI.deps.json
+D:\School\Cloud APIs\Project-Cloud-APIs\FilmCollectionAPI\bin\Debug\netcoreapp2.1\FilmCollectionAPI.runtimeconfig.json
+D:\School\Cloud APIs\Project-Cloud-APIs\FilmCollectionAPI\bin\Debug\netcoreapp2.1\FilmCollectionAPI.runtimeconfig.dev.json
+D:\School\Cloud APIs\Project-Cloud-APIs\FilmCollectionAPI\bin\Debug\netcoreapp2.1\FilmCollectionAPI.dll
+D:\School\Cloud APIs\Project-Cloud-APIs\FilmCollectionAPI\bin\Debug\netcoreapp2.1\FilmCollectionAPI.pdb
+D:\School\Cloud APIs\Project-Cloud-APIs\FilmCollectionAPI\obj\Debug\netcoreapp2.1\FilmCollectionAPI.csprojAssemblyReference.cache
+D:\School\Cloud APIs\Project-Cloud-APIs\FilmCollectionAPI\obj\Debug\netcoreapp2.1\FilmCollectionAPI.csproj.CoreCompileInputs.cache
+D:\School\Cloud APIs\Project-Cloud-APIs\FilmCollectionAPI\obj\Debug\netcoreapp2.1\FilmCollectionAPI.RazorAssemblyInfo.cache
+D:\School\Cloud APIs\Project-Cloud-APIs\FilmCollectionAPI\obj\Debug\netcoreapp2.1\FilmCollectionAPI.RazorAssemblyInfo.cs
+D:\School\Cloud APIs\Project-Cloud-APIs\FilmCollectionAPI\obj\Debug\netcoreapp2.1\FilmCollectionAPI.AssemblyInfoInputs.cache
+D:\School\Cloud APIs\Project-Cloud-APIs\FilmCollectionAPI\obj\Debug\netcoreapp2.1\FilmCollectionAPI.AssemblyInfo.cs
+D:\School\Cloud APIs\Project-Cloud-APIs\FilmCollectionAPI\obj\Debug\netcoreapp2.1\FilmCollectionAPI.RazorTargetAssemblyInfo.cache
+D:\School\Cloud APIs\Project-Cloud-APIs\FilmCollectionAPI\obj\Debug\netcoreapp2.1\FilmCollectionAPI.dll
+D:\School\Cloud APIs\Project-Cloud-APIs\FilmCollectionAPI\obj\Debug\netcoreapp2.1\FilmCollectionAPI.pdb
