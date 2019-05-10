@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieCollectionService, IMovieCollection, IDirector } from '../services/movie-collection.service';
+import { SharedinfoService } from '../services/shared-info.service';
 
 @Component({
   selector: 'app-movie-collection',
@@ -13,12 +14,13 @@ export class MovieCollectionComponent implements OnInit {
 
   sortOptions: SelectItem[];
 
-  selectedMovie: IMovieCollection;
+  //selectedMovie: IMovieCollection;
 
   userInput: string;
+  movieId: string;
  
 
-  constructor(private movieCollectionSvc: MovieCollectionService) { }
+  constructor(private movieCollectionSvc: MovieCollectionService, private sharedSvc: SharedinfoService) { }
 
   ngOnInit() {
     this.getMovies();
@@ -49,6 +51,10 @@ export class MovieCollectionComponent implements OnInit {
     })
   }
 
+  // PAGING TOEVOEGEN 
+  // PAGING TOEVOEGEN 
+  // PAGING TOEVOEGEN 
+
   onSortChange(event) {
     let value = event.value;
 
@@ -73,8 +79,8 @@ export class MovieCollectionComponent implements OnInit {
   }
 
   selectMovie(movie: IMovieCollection){
-    this.selectedMovie = movie;
-    console.log(movie.title);
+    this.sharedSvc.setMovieCollectionId(movie.id.toString());
+    console.log(this.sharedSvc.getMovieCollectionId());
     //TODO: Naar geselecteerde film gaan zodat deze kan worden aangepast of verwijderd
   }
 }

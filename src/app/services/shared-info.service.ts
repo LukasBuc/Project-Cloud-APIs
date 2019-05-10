@@ -8,6 +8,8 @@ export class SharedinfoService {
   private id: string = "";
   private searchTitle: string = "";
   private personId: string = "";
+  
+  private movieCollectionId: string ="";
 
   constructor() { }
 
@@ -38,6 +40,14 @@ export class SharedinfoService {
     this.personId = input;
   }
 
+  //MovieCollection Id
+  public getMovieCollectionId(){
+    return this.movieCollectionId;
+  }
+
+  public setMovieCollectionId(input: string){
+    this.movieCollectionId = input;
+  }
   //TODO: Poster_path hier bijhouden zodat deze niet veranderd van de engelse versie
   //      naar de nederlandse versie
 }
