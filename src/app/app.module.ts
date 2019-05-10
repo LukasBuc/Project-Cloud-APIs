@@ -11,6 +11,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { PaginatorModule } from 'primeng/paginator';
 import { CarouselModule } from 'primeng/carousel';
 import { DataScrollerModule } from 'primeng/datascroller';
+import { DataViewModule } from 'primeng/dataview';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -54,6 +55,7 @@ import { MovieCollectionService } from './services/movie-collection.service';
     PaginatorModule,
     CarouselModule,
     DataScrollerModule,
+    DataViewModule,
     RouterModule.forRoot([
       { path: "search", component: MovieComponent},
       { path: "info", component: MovieInfoComponent},
