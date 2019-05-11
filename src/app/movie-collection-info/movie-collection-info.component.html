@@ -1,0 +1,47 @@
+<div class="film-weergave" *ngIf="movieInfo">
+  <div class="ui-g">
+    <div class="ui-g-8 ui-g-nopad">
+        <div class="ui-g-12">
+          <span class="ui-float-label">
+            <input id="float-input" [(ngModel)]="title" [disabled]="editInfoDisabled" type="text" size="30" pInputText> 
+            <label for="float-input">Title</label>
+          </span>
+        </div>
+        <div class="ui-g-12">
+          <span class="ui-float-label">
+            <input id="float-input" [(ngModel)]="year" [disabled]="editInfoDisabled" type="text" size="30" pInputText> 
+            <label for="float-input">Year</label>
+          </span>
+        </div>
+        <div class="ui-g-12">
+          <span class="ui-float-label">
+            <input id="float-input" [(ngModel)]="genre" [disabled]="editInfoDisabled" type="text" size="30" pInputText> 
+            <label for="float-input">Genre</label>
+          </span>
+        </div>
+        <div class="ui-g-12">
+          <span class="ui-float-label">
+            <input id="float-input" [(ngModel)]="mediaType" [disabled]="editInfoDisabled" type="text" size="30" pInputText> 
+            <label for="float-input">MediaType</label>
+          </span>
+        </div>
+        <div class="ui-g-12">
+          <span class="ui-float-label">
+            <input id="float-input" [(ngModel)]="runtime" [disabled]="editInfoDisabled" type="text" size="30" pInputText> 
+            <label for="float-input">Runtime</label>
+          </span>
+        </div>
+        <div class="ui-g-12">
+          <span class="ui-float-label">
+            <input id="float-input"  [(ngModel)]="director" [disabled]="editInfoDisabled" type="text" size="30" pInputText> 
+            <label for="float-input">Director</label>
+          </span>
+        </div>
+        <div class='ui-g-12'>
+          <button pButton type="button" label="Aanpassen" (click)="editInfo()"></button>
+          <button pButton type="button" label="Opslaan" [disabled]="editInfoDisabled" (click)="saveChanges()"></button>  
+        </div>
+    </div>
+  </div>   
+</div>
+

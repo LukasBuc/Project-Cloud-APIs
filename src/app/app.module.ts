@@ -12,6 +12,7 @@ import { PaginatorModule } from 'primeng/paginator';
 import { CarouselModule } from 'primeng/carousel';
 import { DataScrollerModule } from 'primeng/datascroller';
 import { DataViewModule } from 'primeng/dataview';
+import { InputMaskModule } from 'primeng/inputmask';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -29,6 +30,7 @@ import { PersonService } from './services/person.service';
 import { PersonInfoComponent } from './person-info/person-info.component';
 import { MovieCollectionComponent } from './movie-collection/movie-collection.component';
 import { MovieCollectionService } from './services/movie-collection.service';
+import { MovieCollectionInfoComponent } from './movie-collection-info/movie-collection-info.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { MovieCollectionService } from './services/movie-collection.service';
     NowPlayingComponent,
     UpcomingMoviesComponent,
     PersonInfoComponent,
-    MovieCollectionComponent
+    MovieCollectionComponent,
+    MovieCollectionInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +59,7 @@ import { MovieCollectionService } from './services/movie-collection.service';
     CarouselModule,
     DataScrollerModule,
     DataViewModule,
+    InputMaskModule,
     RouterModule.forRoot([
       { path: "search", component: MovieComponent},
       { path: "info", component: MovieInfoComponent},
@@ -63,6 +67,7 @@ import { MovieCollectionService } from './services/movie-collection.service';
       { path: "upcomingMovies", component: UpcomingMoviesComponent},
       { path: "personInfo", component: PersonInfoComponent },
       { path: "myCollection", component: MovieCollectionComponent },
+      { path: "collectionInfo", component: MovieCollectionInfoComponent },
       { path: "", redirectTo: "search", pathMatch: "full"}
     ])
   ],

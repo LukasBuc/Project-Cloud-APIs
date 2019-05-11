@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,10 @@ export class MovieCollectionService {
     return this.http.get<IMovieCollection[]>(`http://localhost:64098/api/films`);
   }
 
+  getMovie(id: string){
+    return this.http.get<IMovieCollection>(`http://localhost:64098/api/films/${id}`);
+  }
+
   getMoviesSorted(sortBy: string, direction?: string){
     return this.http.get<IMovieCollection[]>(`http://localhost:64098/api/films?sort=${sortBy}&direction=${direction}`);
   }
@@ -22,6 +27,10 @@ export class MovieCollectionService {
 
   getDirectors(){
     return this.http.get<IDirector[]>(`http://localhost:64098/api/directors`);
+  }
+
+  updateFilm(film: IMovieCollection) {
+    return this.http.put<IMovieCollection>(`http://localhost:64098/api/films`, film);
   }
 }
 
