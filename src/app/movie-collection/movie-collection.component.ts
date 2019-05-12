@@ -14,8 +14,6 @@ export class MovieCollectionComponent implements OnInit {
 
   sortOptions: SelectItem[];
 
-  //selectedMovie: IMovieCollection;
-
   userInput: string;
   movieId: string;
  
@@ -45,7 +43,6 @@ export class MovieCollectionComponent implements OnInit {
   }
 
   getMovieByTitle(){
-    console.log(this.userInput);
     this.movieCollectionSvc.getMoviesByTitle(this.userInput).subscribe((result) => {
       this.myCollection = result;
     })
