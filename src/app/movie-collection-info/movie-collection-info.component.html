@@ -37,11 +37,14 @@
             <label for="float-input">Director</label>
           </span>
         </div>
-        <div class='ui-g-12'>
-          <button pButton type="button" label="Aanpassen" (click)="editInfo()"></button>
-          <button pButton type="button" label="Opslaan" [disabled]="editInfoDisabled" (click)="saveChanges()"></button>  
-        </div>
-    </div>
+
+        <button pButton type="button" label="Aanpassen" [disabled]="changesButtonDisabled" (click)="startChanges()"></button>
+        <button pButton type="button" label="Opslaan" [disabled]="saveChangesButtonDisabled" (click)="saveChanges()"></button>
+        <button pButton type="button" label="Nieuwe film" [disabled]="newMovieButtonDisabled" (click)="startNewMovie()"></button>        
+        <button pButton type="button" label="Opslaan nieuwe film" [disabled]="saveNewMovieButtonDisabled" (click)="addMovie()"></button> 
+        <button pButton type="button" label="Verwijder film" [disabled]="deleteMovieButtonDisabled" (click)="deleteMovie()"></button>
+    
+      </div>
   </div>   
 </div>
 
