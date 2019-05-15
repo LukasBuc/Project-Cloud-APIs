@@ -10,6 +10,7 @@ export class SharedinfoService {
   private personId: string = "";
   
   private movieCollectionId: string ="";
+  private movieDeleted: Boolean = false;
 
   constructor() { }
 
@@ -47,6 +48,15 @@ export class SharedinfoService {
 
   public setMovieCollectionId(input: string){
     this.movieCollectionId = input;
+  }
+
+  //Movie deleted
+  public getMovieDeleted(){
+    return this.movieDeleted;
+  }
+
+  public setMovieDeleted(input: Boolean){
+    this.movieDeleted = input;
   }
   //TODO: Poster_path hier bijhouden zodat deze niet veranderd van de engelse versie
   //      naar de nederlandse versie

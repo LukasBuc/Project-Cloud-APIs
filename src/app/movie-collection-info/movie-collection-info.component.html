@@ -1,15 +1,18 @@
+<p-confirmDialog></p-confirmDialog>
+<p-toast></p-toast>
+
 <div class="film-weergave" *ngIf="movieInfo">
   <div class="ui-g">
     <div class="ui-g-8 ui-g-nopad">
         <div class="ui-g-12">
           <span class="ui-float-label">
-            <input id="float-input" [(ngModel)]="title" [disabled]="editInfoDisabled" type="text" size="30" pInputText> 
+            <input id="float-input" [(ngModel)]="title" [disabled]="editInfoDisabled" type="text" size="30"  pInputText> 
             <label for="float-input">Title</label>
           </span>
         </div>
         <div class="ui-g-12">
           <span class="ui-float-label">
-            <input id="float-input" [(ngModel)]="year" [disabled]="editInfoDisabled" type="text" size="30" pInputText> 
+            <input id="float-input" [(ngModel)]="year" [disabled]="editInfoDisabled" type="text" size="30" pKeyFilter="pint" pInputText> 
             <label for="float-input">Year</label>
           </span>
         </div>
@@ -27,7 +30,7 @@
         </div>
         <div class="ui-g-12">
           <span class="ui-float-label">
-            <input id="float-input" [(ngModel)]="runtime" [disabled]="editInfoDisabled" type="text" size="30" pInputText> 
+            <input id="float-input" [(ngModel)]="runtime" [disabled]="editInfoDisabled" type="text" size="30" pKeyFilter="pint" pInputText> 
             <label for="float-input">Runtime</label>
           </span>
         </div>
@@ -42,7 +45,7 @@
         <button pButton type="button" label="Opslaan" [disabled]="saveChangesButtonDisabled" (click)="saveChanges()"></button>
         <button pButton type="button" label="Nieuwe film" [disabled]="newMovieButtonDisabled" (click)="startNewMovie()"></button>        
         <button pButton type="button" label="Opslaan nieuwe film" [disabled]="saveNewMovieButtonDisabled" (click)="addMovie()"></button> 
-        <button pButton type="button" label="Verwijder film" [disabled]="deleteMovieButtonDisabled" (click)="deleteMovie()"></button>
+        <button pButton type="button" label="Verwijder film" [disabled]="deleteMovieButtonDisabled" (click)="confirmDelete()"></button>
     
       </div>
   </div>   

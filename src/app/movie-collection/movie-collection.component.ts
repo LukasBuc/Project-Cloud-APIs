@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieCollectionService, IMovieCollection, IDirector } from '../services/movie-collection.service';
 import { SharedinfoService } from '../services/shared-info.service';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-movie-collection',
@@ -16,18 +17,39 @@ export class MovieCollectionComponent implements OnInit {
 
   userInput: string;
   movieId: string;
+
+  totalPages: number;
+  totalResults: number;
+
  
 
-  constructor(private movieCollectionSvc: MovieCollectionService, private sharedSvc: SharedinfoService) { }
+  constructor(private movieCollectionSvc: MovieCollectionService, private sharedSvc: SharedinfoService, private messageService: MessageService) { 
+
+  }
 
   ngOnInit() {
+
+    //Er moet worden gewacht anders wordt het toast bericht niet getoond
+    setTimeout(() => {  
+      if (this.sharedSvc.getMovieDeleted()) {
+        this.showInfo();    
+        this.sharedSvc.setMovieDeleted(false);
+      }
+    });
+    
     this.getMovies();
 
     this.sortOptions = [
       {label: 'Titel', value: 0},
       {label: 'Jaar', value: 1},
       {label: 'Genre', value: 2}
-  ];
+    ];
+
+  }
+
+  showInfo(){
+    this.messageService.add({severity:'info', summary: 'Info message', detail: 'Film verwijderd'});
+    console.log("info moet worden getoond");
   }
 
   getMovies(){
@@ -47,10 +69,6 @@ export class MovieCollectionComponent implements OnInit {
       this.myCollection = result;
     })
   }
-
-  // PAGING TOEVOEGEN 
-  // PAGING TOEVOEGEN 
-  // PAGING TOEVOEGEN 
 
   onSortChange(event) {
     let value = event.value;
