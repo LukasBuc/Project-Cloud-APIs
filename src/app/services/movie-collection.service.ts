@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +11,10 @@ export class MovieCollectionService {
   getMovies(){
     return this.http.get<IMovieCollection[]>(`http://localhost:64098/api/films`);
   }
+
+  // getTotalMovies(){
+  //   return this.http.get<IMovieCollection[]>(`http://localhost:64098/api/films`);
+  // }
 
   getMovie(id: string){
     return this.http.get<IMovieCollection>(`http://localhost:64098/api/films/${id}`);

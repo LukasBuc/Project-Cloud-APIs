@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MovieCollectionService, IMovieCollection } from '../services/movie-collection.service';
 import { SharedinfoService } from '../services/shared-info.service';
 import { Router } from '@angular/router';
-import { resetComponentState } from '@angular/core/src/render3/state';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-movie-collection-info',
@@ -29,15 +29,13 @@ export class MovieCollectionInfoComponent implements OnInit {
   newMovie: MovieCollection = new MovieCollection();
   newDirector: Director = new Director();
 
-  testFUCKINGDING: IMovieCollection[];
-
   changesButtonDisabled: Boolean = false;
   saveChangesButtonDisabled: Boolean = true;
   newMovieButtonDisabled: Boolean = false;
   saveNewMovieButtonDisabled: Boolean = true;
   deleteMovieButtonDisabled: Boolean = false;
 
-  constructor(private svc: MovieCollectionService, private sharedSvc: SharedinfoService, private router: Router) { }
+  constructor(private svc: MovieCollectionService, private sharedSvc: SharedinfoService, private router: Router, private confirmationService: ConfirmationService, private messageService: MessageService) { }
 
   ngOnInit() {
     if(this.sharedSvc.getMovieCollectionId() != "")
@@ -116,16 +114,33 @@ export class MovieCollectionInfoComponent implements OnInit {
       });  
       }
     })
-
-
     this.reset();
+    this.showSuccess();
+  }
+
+  showSuccess() {
+    this.messageService.add({severity:'success', summary: 'Success Message', detail:'Film toegevoegd'});
+}
+
+  confirmDelete() {
+    console.log("film wordt verwijderd")
+    this.confirmationService.confirm({
+      message: 'Ben je zeker dat je de film wil verwijderen?',
+      accept: () => {
+        this.deleteMovie();
+      }
+    })
   }
 
   deleteMovie(){
     this.svc.deleteMovie(this.movieId).subscribe();
+
+    this.sharedSvc.setMovieDeleted(true);
+
     this.router.navigate(['myCollection']);
     //TODO: popup message ofzo dat zegt dat de film verwijderd is
   }
+
 
   clearInput(){
     this.director = "";
