@@ -13,6 +13,12 @@ import { CarouselModule } from 'primeng/carousel';
 import { DataScrollerModule } from 'primeng/datascroller';
 import { DataViewModule } from 'primeng/dataview';
 import { InputMaskModule } from 'primeng/inputmask';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
+import { KeyFilterModule } from 'primeng/keyfilter';
+
+import { ConfirmationService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -60,6 +66,9 @@ import { MovieCollectionInfoComponent } from './movie-collection-info/movie-coll
     DataScrollerModule,
     DataViewModule,
     InputMaskModule,
+    ConfirmDialogModule,
+    ToastModule,
+    KeyFilterModule,
     RouterModule.forRoot([
       { path: "search", component: MovieComponent},
       { path: "info", component: MovieInfoComponent},
@@ -75,7 +84,9 @@ import { MovieCollectionInfoComponent } from './movie-collection-info/movie-coll
     MovieService,
     SharedinfoService,
     PersonService,
-    MovieCollectionService
+    MovieCollectionService,
+    ConfirmationService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })
