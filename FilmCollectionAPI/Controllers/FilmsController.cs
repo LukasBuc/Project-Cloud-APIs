@@ -23,7 +23,7 @@ namespace FilmCollectionAPI.Controllers
       [HttpGet] // api/films
       public List<Film> GetFilms(string title, string genre, string mediaType, int year, string sort, string direction, int? page, int length = 20)
       {
-      IQueryable<Film> query = _context.Films.Include(d => d.Director);
+        IQueryable<Film> query = _context.Films.Include(d => d.Director);
 
           switch (sort) //films?sort=title&dir=desc
           {
@@ -79,9 +79,7 @@ namespace FilmCollectionAPI.Controllers
         //if (!string.IsNullOrWhiteSpace(year.ToString()))
         //{
         //    query = query.Where(d => d.Year == year);
-        //}
-
-        
+        //}       
 
         if (page.HasValue)
         {
@@ -93,7 +91,7 @@ namespace FilmCollectionAPI.Controllers
         return query.ToList();
       }
 
-      [Route("{id}")]
+    [Route("{id}")]
       [HttpGet] // api/films/1
       public ActionResult<Film> GetFilm(int id) //Film zoeken met id
       {

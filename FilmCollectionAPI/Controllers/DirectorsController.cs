@@ -21,9 +21,16 @@ namespace FilmCollectionAPI.Controllers
         }
 
         [HttpGet]
-        public List<Director> GetDirectors()
+        public List<Director> GetDirectors(string name)
         {
-            return _context.Directors.ToList();
+            IQueryable<Director> query = _context.Directors;
+      
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                query = query.Where(d => d.Name == name);
+            }
+            
+            return query.ToList();
         }
 
         [Route("{id}")]
