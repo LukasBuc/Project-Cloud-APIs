@@ -21,10 +21,7 @@ export class MovieCollectionComponent implements OnInit {
   totalPages: number;
   totalResults: number;
 
- 
-
   constructor(private movieCollectionSvc: MovieCollectionService, private sharedSvc: SharedinfoService, private messageService: MessageService) { 
-
   }
 
   ngOnInit() {
@@ -32,7 +29,7 @@ export class MovieCollectionComponent implements OnInit {
     //Er moet worden gewacht anders wordt het toast bericht niet getoond
     setTimeout(() => {  
       if (this.sharedSvc.getMovieDeleted()) {
-        this.showInfo();    
+        this.showDeleted();    
         this.sharedSvc.setMovieDeleted(false);
       }
     });
@@ -44,12 +41,10 @@ export class MovieCollectionComponent implements OnInit {
       {label: 'Jaar', value: 1},
       {label: 'Genre', value: 2}
     ];
-
   }
 
-  showInfo(){
-    this.messageService.add({severity:'info', summary: 'Info message', detail: 'Film verwijderd'});
-    console.log("info moet worden getoond");
+  showDeleted(){
+    this.messageService.add({severity:'info', summary: 'Film verwijderd', detail: 'De film is uit je collectie verwijderd'});
   }
 
   getMovies(){
@@ -73,8 +68,6 @@ export class MovieCollectionComponent implements OnInit {
   onSortChange(event) {
     let value = event.value;
 
-    console.log(value);
-
     switch (value) {
       case 0:
         //sorteren op titel
@@ -95,8 +88,6 @@ export class MovieCollectionComponent implements OnInit {
 
   selectMovie(movie: IMovieCollection){
     this.sharedSvc.setMovieCollectionId(movie.id.toString());
-    console.log(this.sharedSvc.getMovieCollectionId());
-    //TODO: Naar geselecteerde film gaan zodat deze kan worden aangepast of verwijderd
   }
 }
 
