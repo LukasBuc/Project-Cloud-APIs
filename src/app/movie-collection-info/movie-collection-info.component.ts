@@ -68,12 +68,28 @@ export class MovieCollectionInfoComponent implements OnInit {
     this.updatedMovie.runtime = parseInt(this.runtime);
     this.updatedMovie.mediaType = this.mediaType;
     this.updatedMovie.genre = this.genre;
-    //this.updatedMovie.director.name = this.director;
-
-    this.updatedMovie.directorId = this.directorId;
     this.updatedMovie.id = parseInt(this.movieId);
 
-    this.svc.updateMovie(this.updatedMovie).subscribe();
+    let temporaryDirector = this.director;
+    this.svc.getDirectorByName(temporaryDirector).subscribe((resultDirectorName) => {
+      if(resultDirectorName[0] != undefined){
+        //Director bestaat al
+        console.log("Director bestaat al");
+        this.updatedMovie.directorId = resultDirectorName[0].id;  
+        this.svc.updateMovie(this.updatedMovie).subscribe();          
+      }
+      else{
+        //Director bestaat nog niet
+        console.log("Director bestaat nog niet");
+        this.newDirector.name = this.director;
+        this.svc.addDirector(this.newDirector).subscribe((resultNewDirector) => {
+          this.updatedMovie.directorId = resultNewDirector.id;
+          this.svc.updateMovie(this.updatedMovie).subscribe();
+        })
+      }
+    })
+    //Toast om te tonen dat het opslaan gelukt is
+    this.showSaved();
 
     //Inputs en buttons terug enablen/disablen
     this.reset();
@@ -91,6 +107,7 @@ export class MovieCollectionInfoComponent implements OnInit {
 
       if(result[0] != undefined)
       {
+        console.log(result[0].name);
         //Director bestond al, verder gaan met aanmaken film
         this.newMovie.directorId = result[0].id;
         this.directorId = this.newMovie.directorId;
@@ -100,6 +117,7 @@ export class MovieCollectionInfoComponent implements OnInit {
         });
       }
       else{
+        console.log("Director bestaat nog niet");
         //Nieuwe director aanmaken
         this.newDirector.name = temporaryDirectorName;
         this.svc.addDirector(this.newDirector).subscribe((result) => {
@@ -111,16 +129,20 @@ export class MovieCollectionInfoComponent implements OnInit {
             //nieuwe movie Id doorgeven
             this.movieId = createdResult.id.toString();
           });
-      });  
+        });  
       }
     })
     this.reset();
-    this.showSuccess();
+    this.showAdded();
   }
 
-  showSuccess() {
-    this.messageService.add({severity:'success', summary: 'Success Message', detail:'Film toegevoegd'});
+  showAdded() {
+    this.messageService.add({severity:'success', summary: 'Film toegevoegd', detail:'De film is toegevoegd aan je collectie'});
 }
+
+  showSaved() {
+    this.messageService.add({severity:'success', summary: 'Film opgeslagen', detail: 'De aanpassingen aan de film zijn opgeslagen'});
+  }
 
   confirmDelete() {
     console.log("film wordt verwijderd")
@@ -134,13 +156,10 @@ export class MovieCollectionInfoComponent implements OnInit {
 
   deleteMovie(){
     this.svc.deleteMovie(this.movieId).subscribe();
-
     this.sharedSvc.setMovieDeleted(true);
-
     this.router.navigate(['myCollection']);
-    //TODO: popup message ofzo dat zegt dat de film verwijderd is
+    //Toast dat film verwijderd is wordt getoond op de movie-collection html pagina
   }
-
 
   clearInput(){
     this.director = "";
@@ -198,13 +217,3 @@ class Director {
   id: number;
   name: string;
 }
-
-//WERKT
-// {
-// 	"title": "testFilm",
-// 	"runtime": 120,
-// 	"year": 2303,
-// 	"genre": "action",
-// 	"mediaType": "DVD",
-// 	"directorId": 5
-// }
