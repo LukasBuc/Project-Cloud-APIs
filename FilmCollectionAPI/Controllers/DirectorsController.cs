@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FilmCollectionAPI.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +21,7 @@ namespace FilmCollectionAPI.Controllers
             _context = ctxt;
         }
 
+        [Authorize]
         [HttpGet]
         public List<Director> GetDirectors(string name)
         {
@@ -33,6 +35,7 @@ namespace FilmCollectionAPI.Controllers
             return query.ToList();
         }
 
+        [Authorize]
         [Route("{id}")]
         [HttpGet]
         public ActionResult<Director> GetDirector(int id)
@@ -45,6 +48,7 @@ namespace FilmCollectionAPI.Controllers
             return searchedDirector;
         }
 
+        [Authorize]
         [Route("{directorId}/films")]
         [HttpGet]
         public ActionResult<List<Film>> GetFilmsDirector(int directorId)
@@ -57,6 +61,7 @@ namespace FilmCollectionAPI.Controllers
             return searchedDirector.Films.ToList();
         }
 
+        [Authorize]
         [Route("{id}")]
         [HttpDelete] //Director verwijderen
         public IActionResult DeleteDirector(int id)
@@ -75,6 +80,7 @@ namespace FilmCollectionAPI.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult<Director> AddDirector([FromBody]Director director)
         {
@@ -83,6 +89,7 @@ namespace FilmCollectionAPI.Controllers
             return Created("", director);
         }
 
+        [Authorize]
         [HttpPut]
         public ActionResult<Director> UpdateDirector([FromBody]Director updateDirector)
         {

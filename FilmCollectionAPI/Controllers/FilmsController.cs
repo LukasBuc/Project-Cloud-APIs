@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FilmCollectionAPI.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +21,8 @@ namespace FilmCollectionAPI.Controllers
         _context = ctxt;
       }
 
-      [HttpGet] // api/films
+    [Authorize]
+    [HttpGet] // api/films
       public List<Film> GetFilms(string title, string genre, string mediaType, int year, string sort, string direction, int? page, int length = 20)
       {
         IQueryable<Film> query = _context.Films.Include(d => d.Director);
@@ -91,7 +93,8 @@ namespace FilmCollectionAPI.Controllers
         return query.ToList();
       }
 
-    [Route("{id}")]
+      [Authorize]
+      [Route("{id}")]
       [HttpGet] // api/films/1
       public ActionResult<Film> GetFilm(int id) //Film zoeken met id
       {
@@ -104,6 +107,7 @@ namespace FilmCollectionAPI.Controllers
           return searchedMovie;
       }
 
+      [Authorize]
       [Route("{filmId}/director")]
       [HttpGet] // api/films/1/director
       public ActionResult<Film> GetFilmDirector(int filmId)
@@ -117,6 +121,7 @@ namespace FilmCollectionAPI.Controllers
           return searchedFilmDirector;
       }
 
+      [Authorize]
       [Route("{id}")]
       [HttpDelete] //Film verwijderen
       public IActionResult DeleteMovie(int id)
@@ -135,6 +140,7 @@ namespace FilmCollectionAPI.Controllers
           }
       }
 
+      [Authorize]
       [HttpPost] //Film toevoegen
       public ActionResult<Film> AddFilm([FromBody]Film film)
       {
@@ -143,7 +149,8 @@ namespace FilmCollectionAPI.Controllers
           return Created("", film);
       }
 
-      [HttpPut]
+      [Authorize]
+      [HttpPut] //Film gegevens aanpassen
       public ActionResult<Film> UpdateFilm([FromBody]Film updateFilm)
       {
       _context.Films.Update(updateFilm);

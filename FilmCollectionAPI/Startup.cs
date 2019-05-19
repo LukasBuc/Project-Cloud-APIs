@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FilmCollectionAPI.Model;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -32,6 +33,13 @@ namespace FilmCollectionAPI
           )
         );
 
+      services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
+        {
+          options.Authority = "https://dev-yu3vderd.eu.auth0.com/";
+          options.Audience = "http://FilmCollection/api/v2/";
+        });
+
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
     }
 
@@ -48,6 +56,9 @@ namespace FilmCollectionAPI
           builder.AllowAnyOrigin()
                  .AllowAnyMethod()
                  .AllowAnyHeader());
+
+      app.UseAuthentication();
+
       app.UseMvc();
     }
   }
