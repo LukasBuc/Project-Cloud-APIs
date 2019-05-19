@@ -10,6 +10,8 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 })
 export class MovieCollectionComponent implements OnInit {
 
+  API_URL: string = 'http://FilmCollection/api/v2/';
+
   myCollection: IMovieCollection[];
   directors: IDirector[];
 
@@ -32,10 +34,9 @@ export class MovieCollectionComponent implements OnInit {
         this.showDeleted();    
         this.sharedSvc.setMovieDeleted(false);
       }
+      this.getMovies();
     });
     
-    this.getMovies();
-
     this.sortOptions = [
       {label: 'Titel', value: 0},
       {label: 'Jaar', value: 1},
@@ -50,18 +51,24 @@ export class MovieCollectionComponent implements OnInit {
   getMovies(){
     this.movieCollectionSvc.getMovies().subscribe((result) => {
         this.myCollection = result;
+    }, (err) => {
+      console.log("Unauthorized access");
     })
   }
 
   getMoviesSorted(sortBy: string, direction?: string){
     this.movieCollectionSvc.getMoviesSorted(sortBy, direction).subscribe((result) => {
       this.myCollection = result;
+    }, (err) => {
+      console.log("Unauthorized access");
     })
   }
 
   getMovieByTitle(){
     this.movieCollectionSvc.getMoviesByTitle(this.userInput).subscribe((result) => {
       this.myCollection = result;
+    }, (err) => {
+      console.log("Unauthorized access");
     })
   }
 

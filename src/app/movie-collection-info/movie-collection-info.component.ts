@@ -114,7 +114,9 @@ export class MovieCollectionInfoComponent implements OnInit {
         this.svc.addMovie(this.newMovie).subscribe((createdResult) => {
           //nieuwe movie Id doorgeven
           this.movieId = createdResult.id.toString();
-        });
+        }), (err) => {
+          console.log("Unauthorized access");
+        };
       }
       else{
         console.log("Director bestaat nog niet");
@@ -128,8 +130,12 @@ export class MovieCollectionInfoComponent implements OnInit {
           this.svc.addMovie(this.newMovie).subscribe((createdResult) => {
             //nieuwe movie Id doorgeven
             this.movieId = createdResult.id.toString();
-          });
-        });  
+          }), (err) => {
+            console.log("Unauthorized access");
+          };
+        }), (err) => {
+          console.log("Unauthorized access");
+        };  
       }
     })
     this.reset();
@@ -155,7 +161,9 @@ export class MovieCollectionInfoComponent implements OnInit {
   }
 
   deleteMovie(){
-    this.svc.deleteMovie(this.movieId).subscribe();
+    this.svc.deleteMovie(this.movieId).subscribe(), (err) => {
+      console.log("Unauthorized access");
+    };
     this.sharedSvc.setMovieDeleted(true);
     this.router.navigate(['myCollection']);
     //Toast dat film verwijderd is wordt getoond op de movie-collection html pagina

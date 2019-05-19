@@ -37,6 +37,7 @@ import { PersonInfoComponent } from './person-info/person-info.component';
 import { MovieCollectionComponent } from './movie-collection/movie-collection.component';
 import { MovieCollectionService } from './services/movie-collection.service';
 import { MovieCollectionInfoComponent } from './movie-collection-info/movie-collection-info.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,7 @@ import { MovieCollectionInfoComponent } from './movie-collection-info/movie-coll
       { path: "myCollection", component: MovieCollectionComponent },
       { path: "collectionInfo", component: MovieCollectionInfoComponent },
       { path: "", redirectTo: "search", pathMatch: "full"}
-    ])
+    ]) 
   ],
   providers: [
     MovieService,
@@ -86,7 +87,8 @@ import { MovieCollectionInfoComponent } from './movie-collection-info/movie-coll
     PersonService,
     MovieCollectionService,
     ConfirmationService,
-    MessageService
+    MessageService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
