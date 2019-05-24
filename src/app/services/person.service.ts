@@ -8,17 +8,18 @@ export class PersonService {
 
   private APIkey: string = "b214031a8024721ce93ad896558c66ec";
   private language: string = "nl"; 
+  private rootURL: string = `https://api.themoviedb.org/3/`;
 
   constructor(private http: HttpClient) { }
 
   getPersonInfo(personId: string){
     //We pakken de engelse versie omdat de nederlandse geen biografie heeft
-    return this.http.get<IPersonInfo>(`https://api.themoviedb.org/3/person/${personId}?api_key=${this.APIkey}&language=en-US`)
+    return this.http.get<IPersonInfo>(`${this.rootURL}person/${personId}?api_key=${this.APIkey}&language=en-US`)
   }
 
   getMovieCredits(personId: string){
     //We sorteren op populariteit, de votecount moet minstens 50 zijn
-    return this.http.get<IMovieCredits>(`https://api.themoviedb.org/3/discover/movie?with_cast=${personId}&sort_by=vote_average.desc&api_key=${this.APIkey}&vote_count.gte=50`);
+    return this.http.get<IMovieCredits>(`${this.rootURL}discover/movie?with_cast=${personId}&sort_by=vote_average.desc&api_key=${this.APIkey}&vote_count.gte=50`);
   }
 }
 

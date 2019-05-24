@@ -7,73 +7,70 @@ import { AuthService } from '../services/auth.service';
 })
 export class MovieCollectionService {
 
-  API_URL: string = 'http://FilmCollection/api/v2/';
+  private rootURL: string = `http://localhost:64098/api/`; 
 
   constructor(private http: HttpClient, public auth: AuthService) { }
 
-  // getMovies(){
-  //   return this.http.get<IMovieCollection[]>(`http://localhost:64098/api/films`);
-  // }
   getMovies(){
-    return this.http.get<IMovieCollection[]>(`http://localhost:64098/api/films`, {
+    return this.http.get<IMovieCollection[]>(`${this.rootURL}films`, {
       headers: new HttpHeaders().set('Authorization', `Bearer ${this.auth.accessToken}`)
     });
   }
 
   // getTotalMovies(){
-  //   return this.http.get<IMovieCollection[]>(`http://localhost:64098/api/films`);
+  //   return this.http.get<IMovieCollection[]>(`${this.rootURL}films`);
   // }
 
   getMovie(id: string){
-    return this.http.get<IMovieCollection>(`http://localhost:64098/api/films/${id}`, {
+    return this.http.get<IMovieCollection>(`${this.rootURL}films/${id}`, {
       headers: new HttpHeaders().set('Authorization', `Bearer ${this.auth.accessToken}`)
     });
   }
 
   getMoviesSorted(sortBy: string, direction?: string){
-    return this.http.get<IMovieCollection[]>(`http://localhost:64098/api/films?sort=${sortBy}&direction=${direction}`, {
+    return this.http.get<IMovieCollection[]>(`${this.rootURL}films?sort=${sortBy}&direction=${direction}`, {
       headers: new HttpHeaders().set('Authorization', `Bearer ${this.auth.accessToken}`)
     });
   }
 
   getMoviesByTitle(title: string){
-    return this.http.get<IMovieCollection[]>(`http://localhost:64098/api/films?title=${title}`, {
+    return this.http.get<IMovieCollection[]>(`${this.rootURL}films?title=${title}`, {
       headers: new HttpHeaders().set('Authorization', `Bearer ${this.auth.accessToken}`)
     });
   }
 
   getDirectors(){
-    return this.http.get<IDirector[]>(`http://localhost:64098/api/directors`, {
+    return this.http.get<IDirector[]>(`${this.rootURL}directors`, {
       headers: new HttpHeaders().set('Authorization', `Bearer ${this.auth.accessToken}`)
     });
   }
 
   getDirectorByName(name: string){
-    return this.http.get<IDirector[]>(`http://localhost:64098/api/directors?name=${name}`, {
+    return this.http.get<IDirector[]>(`${this.rootURL}directors?name=${name}`, {
       headers: new HttpHeaders().set('Authorization', `Bearer ${this.auth.accessToken}`)
     });
   }
 
   addDirector(director: IDirector){
-    return this.http.put<IDirector>(`http://localhost:64098/api/directors`, director, {
+    return this.http.put<IDirector>(`${this.rootURL}directors`, director, {
       headers: new HttpHeaders().set('Authorization', `Bearer ${this.auth.accessToken}`)
     });
   }
 
   updateMovie(movie: IMovieCollection) {
-    return this.http.put<IMovieCollection>(`http://localhost:64098/api/films`, movie, {
+    return this.http.put<IMovieCollection>(`${this.rootURL}films`, movie, {
       headers: new HttpHeaders().set('Authorization', `Bearer ${this.auth.accessToken}`)
     });
   }
 
   addMovie(movie: IMovieCollection){
-    return this.http.post<IMovieCollection>(`http://localhost:64098/api/films`, movie, {
+    return this.http.post<IMovieCollection>(`${this.rootURL}films`, movie, {
       headers: new HttpHeaders().set('Authorization', `Bearer ${this.auth.accessToken}`)
     });
   }
 
   deleteMovie(id: string){
-    return this.http.delete(`http://localhost:64098/api/films/${id}`, {
+    return this.http.delete(`${this.rootURL}films/${id}`, {
       headers: new HttpHeaders().set('Authorization', `Bearer ${this.auth.accessToken}`)
     });
   }
