@@ -34,6 +34,7 @@ export class MovieCollectionComponent implements OnInit {
         this.showDeleted();    
         this.sharedSvc.setMovieDeleted(false);
       }
+      console.log("Films wordgen ingeladen");
       this.getMovies();
     });
     
