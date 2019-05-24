@@ -12,9 +12,9 @@ namespace FilmCollectionAPI.Model
       //Create the db if not yet exists
       context.Database.EnsureCreated();
 
-      //Are there already books present?
-      if (!context.Films.Any())
-      {
+      //Are there already films present?
+      if(!context.Films.Any())
+      {       
         var newDirector = new Director()
         {
           Name = "Quentin Tarantino"

@@ -1,0 +1,14 @@
+D:\School\Cloud_APIs\Project-Cloud-APIs\FilmCollectionAPI\bin\Release\netcoreapp2.1\FilmCollectionAPI.deps.json
+D:\School\Cloud_APIs\Project-Cloud-APIs\FilmCollectionAPI\bin\Release\netcoreapp2.1\FilmCollectionAPI.runtimeconfig.json
+D:\School\Cloud_APIs\Project-Cloud-APIs\FilmCollectionAPI\bin\Release\netcoreapp2.1\FilmCollectionAPI.runtimeconfig.dev.json
+D:\School\Cloud_APIs\Project-Cloud-APIs\FilmCollectionAPI\bin\Release\netcoreapp2.1\FilmCollectionAPI.dll
+D:\School\Cloud_APIs\Project-Cloud-APIs\FilmCollectionAPI\bin\Release\netcoreapp2.1\FilmCollectionAPI.pdb
+D:\School\Cloud_APIs\Project-Cloud-APIs\FilmCollectionAPI\obj\Release\netcoreapp2.1\FilmCollectionAPI.csprojAssemblyReference.cache
+D:\School\Cloud_APIs\Project-Cloud-APIs\FilmCollectionAPI\obj\Release\netcoreapp2.1\FilmCollectionAPI.csproj.CoreCompileInputs.cache
+D:\School\Cloud_APIs\Project-Cloud-APIs\FilmCollectionAPI\obj\Release\netcoreapp2.1\FilmCollectionAPI.RazorAssemblyInfo.cache
+D:\School\Cloud_APIs\Project-Cloud-APIs\FilmCollectionAPI\obj\Release\netcoreapp2.1\FilmCollectionAPI.RazorAssemblyInfo.cs
+D:\School\Cloud_APIs\Project-Cloud-APIs\FilmCollectionAPI\obj\Release\netcoreapp2.1\FilmCollectionAPI.AssemblyInfoInputs.cache
+D:\School\Cloud_APIs\Project-Cloud-APIs\FilmCollectionAPI\obj\Release\netcoreapp2.1\FilmCollectionAPI.AssemblyInfo.cs
+D:\School\Cloud_APIs\Project-Cloud-APIs\FilmCollectionAPI\obj\Release\netcoreapp2.1\FilmCollectionAPI.RazorTargetAssemblyInfo.cache
+D:\School\Cloud_APIs\Project-Cloud-APIs\FilmCollectionAPI\obj\Release\netcoreapp2.1\FilmCollectionAPI.dll
+D:\School\Cloud_APIs\Project-Cloud-APIs\FilmCollectionAPI\obj\Release\netcoreapp2.1\FilmCollectionAPI.pdb
