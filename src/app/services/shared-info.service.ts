@@ -12,6 +12,8 @@ export class SharedinfoService {
   private movieCollectionId: string ="";
   private movieDeleted: Boolean = false;
 
+  private currentPage: string = "0";
+
   constructor() { }
 
   //user input
@@ -58,6 +60,13 @@ export class SharedinfoService {
   public setMovieDeleted(input: Boolean){
     this.movieDeleted = input;
   }
-  //TODO: Poster_path hier bijhouden zodat deze niet veranderd van de engelse versie
-  //      naar de nederlandse versie
+  
+  //Current page
+  public getCurrentPage(){
+    return this.currentPage;
+  }
+
+  public setCurrentPage(input: string){
+    this.currentPage = input;
+  }
 }

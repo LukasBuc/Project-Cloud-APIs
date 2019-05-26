@@ -17,10 +17,6 @@ export class MovieCollectionService {
     });
   }
 
-  // getTotalMovies(){
-  //   return this.http.get<IMovieCollection[]>(`${this.rootURL}films`);
-  // }
-
   getMovie(id: string){
     return this.http.get<IMovieCollection>(`${this.rootURL}films/${id}`, {
       headers: new HttpHeaders().set('Authorization', `Bearer ${this.auth.accessToken}`)

@@ -7,6 +7,7 @@ import * as auth0 from 'auth0-js';
 })
 export class AuthService {
 
+
   private _idToken: string;
   private _accessToken: string;
   private _expiresAt: number;
@@ -43,7 +44,7 @@ export class AuthService {
        if(authResult && authResult.accessToken && authResult.idToken){
          window.location.hash = '';
         this.localLogin(authResult);
-        this.router.navigate(['/myCollection']);
+        this.router.navigate(['/search']);
        } else if (err){
          this.router.navigate(['/search']);
          console.log(err);
