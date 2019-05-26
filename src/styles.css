@@ -37,7 +37,8 @@ body .ui-paginator .ui-paginator-next, body .ui-paginator .ui-paginator-last {
         margin-right: 0px;
         margin-bottom: 0px;
         color: white;
-        background-color: #464642;
+        background-color: #1a1a0d;  
+        /* #464642; */
       }
     
       .film-weergave {
@@ -46,7 +47,8 @@ body .ui-paginator .ui-paginator-next, body .ui-paginator .ui-paginator-last {
         width: 1555px;
         /* border: 3px solid green; */
         padding: 10px;
-        background: #4F5C5C;
+        background: #4d4d4d;
+        /* 4e4e4e */
       }
     
       .p-col:nth-child(4n+0) {
@@ -62,7 +64,7 @@ body .ui-paginator .ui-paginator-next, body .ui-paginator .ui-paginator-last {
     margin-right: 0px;
     margin-bottom: 0px;
     color: white;
-    background-color: #464642;
+    background-color: #1a1a0d;
   }
 
   .film-weergave {
@@ -71,13 +73,18 @@ body .ui-paginator .ui-paginator-next, body .ui-paginator .ui-paginator-last {
     width: 1150px;
     /* border: 3px solid red; */
     padding: 10px;
-    background: #4F5C5C;
+    background: #4d4d4d;
   }
 
   .p-col:nth-child(3n+0) {
     /* background: red; */
     width: 300px;
     flex-grow: 0;
+  }
+
+  .ui-g-8 {
+    width: 700px;
+    margin-left: 100px;
   }
 }
 
@@ -87,7 +94,7 @@ body .ui-paginator .ui-paginator-next, body .ui-paginator .ui-paginator-last {
       margin-right: 0px;
       margin-bottom: 0px;
       color: white;
-      background-color: #464642;
+      background-color: #1a1a0d;
     }
   
     .film-weergave {
@@ -96,13 +103,19 @@ body .ui-paginator .ui-paginator-next, body .ui-paginator .ui-paginator-last {
       width: 750px;
       /* border: 3px solid purple; */
       padding: 10px;
-      background: #4F5C5C;
+      background: #4d4d4d;
+      /* 4F5C5C */
     }
   
     .p-col:nth-child(even) {
       /* background: red; */
       width: 300px;
       flex-grow: 0;
+    }
+
+    .ui-g-8 {
+      width: 700px;
+      margin-left: 10px;
     }
   }
 
@@ -112,7 +125,7 @@ body .ui-paginator .ui-paginator-next, body .ui-paginator .ui-paginator-last {
         margin-right: 0px;
         margin-bottom: 0px;
         color: white;
-        background-color: #464642;
+        background-color: #1a1a0d;
       }
     
       .film-weergave {
@@ -121,12 +134,10 @@ body .ui-paginator .ui-paginator-next, body .ui-paginator .ui-paginator-last {
         width: 400px;
         /* border: 3px solid white; */
         padding: 10px;
-        background: #4F5C5C;
+        background: #4d4d4d;
       }
-    
-      /* .p-col:nth-child(even) {
-        background: red;
+
+      .ui-g-8 {
         width: 300px;
-        flex-grow: 0;
-      } */
+      }
   }
