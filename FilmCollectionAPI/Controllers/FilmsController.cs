@@ -23,7 +23,7 @@ namespace FilmCollectionAPI.Controllers
 
     [Authorize]
     [HttpGet] // api/films
-      public List<Film> GetFilms(string title, string genre, string mediaType, int year, string sort, string direction, int? page, int length = 20)
+      public List<Film> GetFilms(string title, string genre, string mediaType, string sort, string direction, int? page, int length = 20)
       {
         IQueryable<Film> query = _context.Films.Include(d => d.Director);
 
@@ -76,12 +76,7 @@ namespace FilmCollectionAPI.Controllers
         if (!string.IsNullOrWhiteSpace(mediaType))
         {
             query = query.Where(d => d.MediaType == mediaType);
-        }
-
-        //if (!string.IsNullOrWhiteSpace(year.ToString()))
-        //{
-        //    query = query.Where(d => d.Year == year);
-        //}       
+        }      
 
         if (page.HasValue)
         {

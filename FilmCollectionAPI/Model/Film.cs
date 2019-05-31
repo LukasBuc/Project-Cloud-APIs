@@ -24,7 +24,5 @@ namespace FilmCollectionAPI.Model
     public int? DirectorId { get; set; }
 
     public Director Director { get; set; }
-
-    //Eventueel Id verwijzing naar database van The Movie Database
   }
 }
