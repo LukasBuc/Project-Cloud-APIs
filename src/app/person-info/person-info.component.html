@@ -6,19 +6,18 @@
           <div class="ui-g-12"><p>Geboortedatum: {{personInfo.birthday | date:'d LLLL yyyy'}}</p></div>
           <div class="ui-g-12"><p>{{personInfo.biography}}</p></div>
           <div class="ui-g-12">
-
-              <p-carousel headerText="Films" [value]="MovieCredits.results" easing="easeOutStrong" numVisible=5>
-                  <ng-template let-movie let-i="index" pTemplate="movie">
-                      <div class="ui-grid ui-grid-responsive">
-                          <div class="ui-grid-row">  
-                              <div class="ui-grid-col-12"><p class="titleMovie">{{movie.original_title}}</p></div>
-                          </div>
-                          <div class="ui-grid-row">   
-                              <div class="ui-grid-col-12"><img [src]="movie.poster_path" (click)=getMovieId(movie) onmouseover="" style="cursor: pointer" [routerLink]="['/info']"></div>
-                          </div>
-                      </div>
-                  </ng-template>
-              </p-carousel>
+            <p-carousel headerText="Films" [value]="MovieCredits.results" easing="easeOutStrong" numVisible=5>
+                <ng-template let-movie let-i="index" pTemplate="movie">
+                    <div class="ui-grid ui-grid-responsive">
+                        <div class="ui-grid-row">  
+                            <div class="ui-grid-col-12"><p class="titleMovie">{{movie.original_title}}</p></div>
+                        </div>
+                        <div class="ui-grid-row">   
+                            <div class="ui-grid-col-12"><img [src]="movie.poster_path" (click)=getMovieId(movie) onmouseover="" style="cursor: pointer" [routerLink]="['/info']"></div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-carousel>
           </div>
       </div>      
   </div>

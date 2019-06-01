@@ -24,8 +24,6 @@ export class MovieComponent implements OnInit {
 
   poster_base_url: string = 'https://image.tmdb.org/t/p/w300';
 
-  //testList: string[] = ["FILM 1", "FILM 2", "FILM 3", "FILM 4"];
-
   constructor(private svc: MovieService, private sharedSvc: SharedinfoService) { }
 
   ngOnInit() {
@@ -61,10 +59,14 @@ export class MovieComponent implements OnInit {
   
         //Lijst van poster url's ophalen en volledig maken
         for (let i = 0; i < result.results.length; i++) {  
-          //TODO: checken of er een poster is, indien niet zelf error poster toevoegen die aangeeft dat er geen poster is
           this.movieList[i].poster_path = this.poster_base_url + this.movieList[i].poster_path;
         }
       })
+    }
+    else if (userInput == ""){
+      this.searchMostPopularMovie();
+      this.previousSearch = "";
+      this.sharedSvc.setSearchTitle("");
     }
   }
 

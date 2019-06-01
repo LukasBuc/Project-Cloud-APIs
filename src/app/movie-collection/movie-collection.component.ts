@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieCollectionService, IMovieCollection, IDirector } from '../services/movie-collection.service';
 import { SharedinfoService } from '../services/shared-info.service';
+import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
@@ -9,8 +10,6 @@ import { ConfirmationService, MessageService } from 'primeng/api';
   styleUrls: ['./movie-collection.component.css']
 })
 export class MovieCollectionComponent implements OnInit {
-
-  API_URL: string = 'http://FilmCollection/api/v2/';
 
   myCollection: IMovieCollection[];
   directors: IDirector[];
@@ -23,8 +22,7 @@ export class MovieCollectionComponent implements OnInit {
   totalPages: number;
   totalResults: number;
 
-  constructor(private movieCollectionSvc: MovieCollectionService, private sharedSvc: SharedinfoService, private messageService: MessageService) { 
-  }
+  constructor(private movieCollectionSvc: MovieCollectionService, private sharedSvc: SharedinfoService, private messageService: MessageService, private router: Router) { }
 
   ngOnInit() {
 
@@ -96,6 +94,11 @@ export class MovieCollectionComponent implements OnInit {
 
   selectMovie(movie: IMovieCollection){
     this.sharedSvc.setMovieCollectionId(movie.id.toString());
+  }
+
+  addMovie(){
+    this.sharedSvc.setMovieCollectionId("");
+    this.router.navigate(['collectionInfo']);
   }
 }
 

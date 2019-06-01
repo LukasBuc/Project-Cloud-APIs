@@ -8,7 +8,6 @@
             <div class="ui-g-12"><p>Budget: {{budget | currency:"USD"}}</p></div>
             <div class="ui-g-6"><p>Release datum: {{releaseDate | date:'d LLLL yyyy'}}</p></div>
             <div class="ui-g-12">
-              <!-- TODO: opmaak genres-->
               <p>Genre: </p>
               <li *ngFor="let genre of genres">
               {{genre.name}}

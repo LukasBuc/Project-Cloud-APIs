@@ -9,17 +9,13 @@ import { SharedinfoService } from '../services/shared-info.service';
 })
 export class NowPlayingComponent implements OnInit {
   movieList: IResult[];
-  //posterList: string[];
   movieId: string;
 
   poster_base_url: string = 'https://image.tmdb.org/t/p/w300';
 
-
   currentPage: number = 1;
   numberOfPages: number;
   pages: IMoviesWithDates;
-
-
 
   constructor(private svc: MovieService, private sharedSvc: SharedinfoService) { }
 
