@@ -4,6 +4,16 @@
   overflow: hidden;
 }
 
+.p-grid img {
+  transition: .5s ease;
+  backface-visibility: hidden;
+  opacity: 1;
+}
+
+.p-grid img:hover {
+  opacity: 0.3;
+}
+
 body .ui-carousel .ui-carousel-viewport .ui-carousel-items .ui-carousel-item {
   border: none;
   overflow: hidden;

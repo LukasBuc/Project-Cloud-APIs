@@ -8,16 +8,6 @@
     
 }
 
-.p-grid img {
-    transition: .5s ease;
-    backface-visibility: hidden;
-    opacity: 1;
-  }
-
-  .p-grid img:hover {
-    opacity: 0.3;
-  }
-
   .ui-inputgroup {
     margin-left: 25px;
     margin-top: 25px;
