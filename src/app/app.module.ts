@@ -16,6 +16,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { KeyFilterModule } from 'primeng/keyfilter';
+import { TooltipModule } from 'primeng/tooltip';
 
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
@@ -70,6 +71,7 @@ import { AuthService } from './services/auth.service';
     ConfirmDialogModule,
     ToastModule,
     KeyFilterModule,
+    TooltipModule,
     RouterModule.forRoot([
       { path: "search", component: MovieComponent},
       { path: "info", component: MovieInfoComponent},

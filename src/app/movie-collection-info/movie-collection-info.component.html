@@ -1,9 +1,10 @@
 <p-confirmDialog></p-confirmDialog>
 <p-toast></p-toast>
 
-<div class="film-weergave" *ngIf="movieInfo">
-  <div class="ui-g">
-    <div class="ui-g-8 ui-g-nopad">
+<div class="film-weergave">
+  <button id="btnVorige" (click)="returnMain()" pButton type="button" label="Vorige"></button>
+  <div class="ui-g">      
+    <div class="ui-g-8 ui-g-nopad">       
         <div class="ui-g-12">
           <span class="ui-float-label">
             <input id="float-input" [(ngModel)]="title" [disabled]="editInfoDisabled" type="text" size="30"  pInputText> 
@@ -24,13 +25,13 @@
         </div>
         <div class="ui-g-12">
           <span class="ui-float-label">
-            <input id="float-input" [(ngModel)]="mediaType" [disabled]="editInfoDisabled" type="text" size="30" pInputText> 
+            <input id="float-input" [(ngModel)]="mediaType" [disabled]="editInfoDisabled" pTooltip="DVD, Bluray, UHD-Bluray" type="text" size="30" pInputText> 
             <label for="float-input">MediaType</label>
           </span>
         </div>
         <div class="ui-g-12">
           <span class="ui-float-label">
-            <input id="float-input" [(ngModel)]="runtime" [disabled]="editInfoDisabled" type="text" size="30" pKeyFilter="pint" pInputText> 
+            <input id="float-input" [(ngModel)]="runtime" [disabled]="editInfoDisabled" type="text" size="30" pKeyFilter="pint" pTooltip="Lengte film in minuten" pInputText> 
             <label for="float-input">Runtime</label>
           </span>
         </div>
@@ -41,11 +42,11 @@
           </span>
         </div>
 
-        <button pButton type="button" label="Aanpassen" [disabled]="changesButtonDisabled" (click)="startChanges()"></button>
-        <button pButton type="button" label="Opslaan" [disabled]="saveChangesButtonDisabled" (click)="saveChanges()"></button>
-        <button pButton type="button" label="Nieuwe film" [disabled]="newMovieButtonDisabled" (click)="startNewMovie()"></button>        
-        <button pButton type="button" label="Opslaan nieuwe film" [disabled]="saveNewMovieButtonDisabled" (click)="addMovie()"></button> 
-        <button pButton type="button" label="Verwijder film" [disabled]="deleteMovieButtonDisabled" (click)="confirmDelete()"></button>
+        <button pButton type="button" class="btnControls" label="Aanpassen" [disabled]="changesButtonDisabled" (click)="startChanges()"></button>
+        <button pButton type="button" class="btnControls" label="Opslaan" [disabled]="saveChangesButtonDisabled" (click)="saveChanges()"></button>
+        <button pButton type="button" class="btnControls" label="Nieuwe film" [disabled]="newMovieButtonDisabled" (click)="startNewMovie()"></button>        
+        <button pButton type="button" class="btnControls" label="Opslaan nieuwe film" [disabled]="saveNewMovieButtonDisabled" (click)="addMovie()"></button> 
+        <button pButton type="button" class="btnControls" label="Verwijder film" [disabled]="deleteMovieButtonDisabled" (click)="confirmDelete()"></button>
     
       </div>
   </div>   
