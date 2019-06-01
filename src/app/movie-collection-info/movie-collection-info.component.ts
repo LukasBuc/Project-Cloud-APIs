@@ -3,6 +3,7 @@ import { MovieCollectionService, IMovieCollection } from '../services/movie-coll
 import { SharedinfoService } from '../services/shared-info.service';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-movie-collection-info',
@@ -35,15 +36,22 @@ export class MovieCollectionInfoComponent implements OnInit {
   saveNewMovieButtonDisabled: Boolean = true;
   deleteMovieButtonDisabled: Boolean = false;
 
-  constructor(private svc: MovieCollectionService, private sharedSvc: SharedinfoService, private router: Router, private confirmationService: ConfirmationService, private messageService: MessageService) { }
-
+  constructor(public auth: AuthService, private svc: MovieCollectionService, private sharedSvc: SharedinfoService, private router: Router, private confirmationService: ConfirmationService, private messageService: MessageService) {
+    auth.handleAuthentication();
+   }
+    
   ngOnInit() {
-    if(this.sharedSvc.getMovieCollectionId() != "")
-    {     
-      this.searchMovie();
+    if(this.auth.isAuthenticated()){
+      if(this.sharedSvc.getMovieCollectionId() != "")
+      {     
+        this.searchMovie();
+      }
+      else{
+        console.log("Nieuwe film moet worden aangemaakt");
+        this.startNewMovie();
+      }
     }
     else{
-      console.log("Geen id gevonden, terug naar collectie!");
       this.router.navigate(['myCollection']);
     }
   }
@@ -63,83 +71,94 @@ export class MovieCollectionInfoComponent implements OnInit {
   }
 
   saveChanges(){
-    this.updatedMovie.title = this.title;
-    this.updatedMovie.year = parseInt(this.year);
-    this.updatedMovie.runtime = parseInt(this.runtime);
-    this.updatedMovie.mediaType = this.mediaType;
-    this.updatedMovie.genre = this.genre;
-    this.updatedMovie.id = parseInt(this.movieId);
 
-    let temporaryDirector = this.director;
-    this.svc.getDirectorByName(temporaryDirector).subscribe((resultDirectorName) => {
-      if(resultDirectorName[0] != undefined){
-        //Director bestaat al
-        console.log("Director bestaat al");
-        this.updatedMovie.directorId = resultDirectorName[0].id;  
-        this.svc.updateMovie(this.updatedMovie).subscribe();          
-      }
-      else{
-        //Director bestaat nog niet
-        console.log("Director bestaat nog niet");
-        this.newDirector.name = this.director;
-        this.svc.addDirector(this.newDirector).subscribe((resultNewDirector) => {
-          this.updatedMovie.directorId = resultNewDirector.id;
-          this.svc.updateMovie(this.updatedMovie).subscribe();
-        })
-      }
-    })
-    //Toast om te tonen dat het opslaan gelukt is
-    this.showSaved();
+    if(this.title != "" && this.year != "" && this.runtime != "" && this.mediaType != "" && this.genre != "" && this.movieId != ""){
+      this.updatedMovie.title = this.title;
+      this.updatedMovie.year = parseInt(this.year);
+      this.updatedMovie.runtime = parseInt(this.runtime);
+      this.updatedMovie.mediaType = this.mediaType;
+      this.updatedMovie.genre = this.genre;
+      this.updatedMovie.id = parseInt(this.movieId);
 
-    //Inputs en buttons terug enablen/disablen
-    this.reset();
+      let temporaryDirector = this.director;
+      this.svc.getDirectorByName(temporaryDirector).subscribe((resultDirectorName) => {
+        if(resultDirectorName[0] != undefined){
+          //Director bestaat al
+          console.log("Director bestaat al");
+          this.updatedMovie.directorId = resultDirectorName[0].id;  
+          this.svc.updateMovie(this.updatedMovie).subscribe();          
+        }
+        else{
+          //Director bestaat nog niet
+          console.log("Director bestaat nog niet");
+          this.newDirector.name = this.director;
+          this.svc.addDirector(this.newDirector).subscribe((resultNewDirector) => {
+            this.updatedMovie.directorId = resultNewDirector.id;
+            this.svc.updateMovie(this.updatedMovie).subscribe();
+          })
+        }
+      })
+      //Toast om te tonen dat het opslaan gelukt is
+      this.showSaved();
+
+      //Inputs en buttons terug enablen/disablen
+      this.reset();
+    }
+    else{
+      console.log("Een of meerdere velden zijn niet ingevuld");
+    }   
   }
 
   addMovie(){
-    this.newMovie.title = this.title;
-    this.newMovie.year = parseInt(this.year);
-    this.newMovie.runtime = parseInt(this.runtime);
-    this.newMovie.mediaType = this.mediaType;
-    this.newMovie.genre = this.genre;
+    if(this.title != "" && this.year != "" && this.runtime != "" && this.mediaType != "" && this.genre != "" && this.movieId != ""){
+      console.log(this.title);
 
-    let temporaryDirectorName = this.director;
-    this.svc.getDirectorByName(temporaryDirectorName).subscribe((result) => {
 
-      if(result[0] != undefined)
-      {
-        console.log(result[0].name);
-        //Director bestond al, verder gaan met aanmaken film
-        this.newMovie.directorId = result[0].id;
-        this.directorId = this.newMovie.directorId;
-        this.svc.addMovie(this.newMovie).subscribe((createdResult) => {
-          //nieuwe movie Id doorgeven
-          this.movieId = createdResult.id.toString();
-        }), (err) => {
-          console.log("Unauthorized access");
-        };
-      }
-      else{
-        console.log("Director bestaat nog niet");
-        //Nieuwe director aanmaken
-        this.newDirector.name = temporaryDirectorName;
-        this.svc.addDirector(this.newDirector).subscribe((result) => {
+      this.newMovie.title = this.title;
+      this.newMovie.year = parseInt(this.year);
+      this.newMovie.runtime = parseInt(this.runtime);
+      this.newMovie.mediaType = this.mediaType;
+      this.newMovie.genre = this.genre;
 
-          //nieuw aangemaakte director id opvragen
-          this.newMovie.directorId = result.id;
+      let temporaryDirectorName = this.director;
+      this.svc.getDirectorByName(temporaryDirectorName).subscribe((result) => {
 
+        if(result[0] != undefined)
+        {
+          console.log(result[0].name);
+          //Director bestond al, verder gaan met aanmaken film
+          this.newMovie.directorId = result[0].id;
+          this.directorId = this.newMovie.directorId;
           this.svc.addMovie(this.newMovie).subscribe((createdResult) => {
             //nieuwe movie Id doorgeven
             this.movieId = createdResult.id.toString();
           }), (err) => {
             console.log("Unauthorized access");
           };
-        }), (err) => {
-          console.log("Unauthorized access");
-        };  
-      }
-    })
-    this.reset();
-    this.showAdded();
+        }
+        else{
+          console.log("Director bestaat nog niet");
+          //Nieuwe director aanmaken
+          this.newDirector.name = temporaryDirectorName;
+          this.svc.addDirector(this.newDirector).subscribe((result) => {
+
+            //nieuw aangemaakte director id opvragen
+            this.newMovie.directorId = result.id;
+
+            this.svc.addMovie(this.newMovie).subscribe((createdResult) => {
+              //nieuwe movie Id doorgeven
+              this.movieId = createdResult.id.toString();
+            }), (err) => {
+              console.log("Unauthorized access");
+            };
+          }), (err) => {
+            console.log("Unauthorized access");
+          };  
+        }
+      })
+      this.reset();
+      this.showAdded();
+    }
   }
 
   showAdded() {
@@ -207,6 +226,10 @@ export class MovieCollectionInfoComponent implements OnInit {
     this.deleteMovieButtonDisabled = false;
 
     this.editInfoDisabled = true;
+  }
+
+  returnMain(){
+    this.router.navigate(['myCollection']);
   }
 }
 
