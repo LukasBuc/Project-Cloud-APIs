@@ -13,7 +13,7 @@ namespace FilmCollectionAPI.Model
       context.Database.EnsureCreated();
 
       //Are there already films present?
-      if(!context.Films.Any())
+      if (!context.Films.Any())
       {       
         var newDirector = new Director()
         {
